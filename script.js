@@ -47,11 +47,11 @@ function submitAnswer() {
   const feedback = document.getElementById("feedback");
   if (!input) return;
   if (correctAnswers.includes(input)) {
-    feedback.textContent = "✅ Correct!";
+    feedback.textContent = "Great! That is correct!";
     feedback.className = "feedback correct";
     score++;
   } else {
-    feedback.textContent = `❌ Incorrect. Correct answer: "${correctAnswers.join(', ')}"`;
+    feedback.textContent = `Sorry, that is incorrect. Correct answer: "${correctAnswers.join(', ')}"`;
     feedback.className = "feedback incorrect";
   }
   document.getElementById("score").textContent = `Score: ${score}`;
@@ -60,7 +60,7 @@ function submitAnswer() {
 function nextQuestion() {
   currentIndex++;
   if (currentIndex >= questionLimit) {
-    alert(`🎉 Done! Final score: ${score} out of ${questionLimit}`);
+    alert(`You finished! Final score: ${score} out of ${questionLimit}`);
     startOver();
   } else {
     showQuestion();
@@ -70,7 +70,7 @@ function nextQuestion() {
 function startOver() {
   score = 0;
   currentIndex = 0;
-  let input = prompt(`How many questions do you want? (Max ${vocabList.length})`);
+  let input = prompt(`How many words do you want? (Max ${vocabList.length})`);
   let num = parseInt(input);
   if (isNaN(num) || num < 1) {
     num = vocabList.length;

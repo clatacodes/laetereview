@@ -1,1 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Latin Vocab Master</title>
+  <style>
+    :root {
+      --main-bg: #f9fafb;
+      --card-bg: #ffffff;
+      --accent: #6366f1;
+      --success: #10b981;
+      --error: #ef4444;
+      --text-color: #111827;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--main-bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      color: var(--text-color);
+    }
+    .card {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+    h1 {
+      color: var(--accent);
+      margin: 0 0 10px;
+    }
+    .definition {
+      font-size: 1.2em;
+      margin: 20px 0;
+    }
+    input[type="text"] {
+      padding: 12px;
+      width: 80%;
+      font-size: 1em;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+    }
+    input:focus { border-color: var(--accent); }
+    .button {
+      padding: 10px 18px;
+      margin: 10px 5px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background 0.3s;
+    }
+    .button:hover { background: #4f46e5; }
+    .feedback {
+      margin: 15px;
+      font-weight: bold;
+      min-height: 1.5em;
+    }
+    .feedback.correct { color: var(--success); }
+    .feedback.incorrect { color: var(--error); }
+    .score { margin-bottom: 10px; font-weight: bold; }
+    @media (max-width: 600px) {
+      .card { padding: 20px; }
+      input { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Latin Vocabulary</h1>
+    <div class="definition" id="definition">Loading...</div>
+    <input type="text" id="answerInput" placeholder="Type your answer..." />
+    <div>
+      <button class="button" onclick="submitAnswer()">Submit</button>
+      <button class="button" onclick="nextQuestion()">Next</button>
+    </div>
+    <div class="feedback" id="feedback"></div>
+    <div class="score" id="score"></div>
+    <hr style="margin: 20px 0;">
+    <div>
+      <button class="button" onclick="startOver()">Start Over</button>
+      <button class="button" onclick="toggleMode()">Toggle Mode</button>
+    </div>
+    <p style="margin-top:10px">Mode: <strong id="modeLabel"></strong></p>
+  </div>
 
+  <script>
+    const vocabList = [
+    //ā, ē, ī, ō, ū
+      { latin:"magnus", eng:"big, great" },
+      { latin:"bonus", eng:"good" },
+      { latin:"malus", eng:"bad" },
+      { latin:"canis", eng:"dog" },
+      { latin:"puer", eng:"boy" },
+      { latin:"puella", eng:"girl" }
+      { latin: "ā","ab" eng: "from", "by"},
+      { latin: "abīre", eng: "to go away"},
+      { latin: "abhínc", eng: "ago","previously"},
+      { latin: "abōminándus", eng: "detestable", "horrible"},
+      { latin: "ábstinēns", eng: "refraining from"},
+      { latin: "abstulere", eng: "to takeaway","to withdraw"},
+      { latin:"abésse", eng: "to be away", "to be absent", "to be distant" },
+      { latin:"ac", eng:"and" },
+      { latin:"idem ac", eng:"the same as" },
+      { latin:"accéndere", eng:"to set on fire" },
+      { latin:"accdere", eng:"" },
+      
+    ];
+
+    let shuffledList = [];
+    let currentIndex = 0;
+    let score = 0;
+    let modeLatinToEng = true;
+    let questionLimit = vocabList.length;
+
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    function showQuestion() {
+      const cur = shuffledList[currentIndex];
+      const prompt = modeLatinToEng ? cur.latin : cur.eng;
+      document.getElementById("definition").textContent = prompt;
+      document.getElementById("answerInput").value = "";
+      document.getElementById("feedback").textContent = "";
+      document.getElementById("feedback").className = "feedback";
+      document.getElementById("score").textContent = `Score: ${score}`;
+      document.getElementById("modeLabel").textContent = modeLatinToEng ? "Latin → English" : "English → Latin";
+      document.getElementById("answerInput").focus();
+    }
+
+    function submitAnswer() {
+      const input = document.getElementById("answerInput").value.trim().toLowerCase();
+      const cur = shuffledList[currentIndex];
+      const correctAnswers = (modeLatinToEng ? cur.eng : cur.latin).toLowerCase().split(',').map(s => s.trim());
+      const feedback = document.getElementById("feedback");
+      if (!input) return;
+      if (correctAnswers.includes(input)) {
+        feedback.textContent = "✅ Correct!";
+        feedback.className = "feedback correct";
+        score++;
+      } else {
+        feedback.textContent = `❌ Incorrect. Correct answer: "${correctAnswers.join(', ')}"`;
+        feedback.className = "feedback incorrect";
+      }
+      document.getElementById("score").textContent = `Score: ${score}`;
+    }
+
+    function nextQuestion() {
+      currentIndex++;
+      if (currentIndex >= questionLimit) {
+        alert(`🎉 Done! Final score: ${score} out of ${questionLimit}`);
+        startOver();
+      } else {
+        showQuestion();
+      }
+    }
+
+    function startOver() {
+      score = 0;
+      currentIndex = 0;
+      let input = prompt(`How many questions do you want? (Max ${vocabList.length})`);
+      let num = parseInt(input);
+      if (isNaN(num) || num < 1) {
+        num = vocabList.length;
+      } else if (num > vocabList.length) {
+        num = vocabList.length;
+      }
+      questionLimit = num;
+      shuffledList = shuffle([...vocabList]).slice(0, questionLimit);
+      showQuestion();
+    }
+
+    function toggleMode() {
+      modeLatinToEng = !modeLatinToEng;
+      startOver();
+    }
+    document.addEventListener('keydown', function(event) {
+      const tag = document.activeElement.tagName.toLowerCase();
+      if (tag === 'input') {
+        // Ignore if inside input and Enter (to avoid submitting form)
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault(); // prevent form submit or space scrolling
+          nextQuestion();
+        }
+      }
+    });
+    startOver();
+  </script>
+</body>
+</html>

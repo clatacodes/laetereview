@@ -1,3 +1,4 @@
+// Vocabulary List (keep extending it as needed)
 const vocabList = [
   { latin: "a, ab", eng: "from, by", fig: "preposition" },
   { latin: "abeō, abīre, abīvī, abitus", eng: "to go away", fig: "verb", conjugation: "irregular" },
@@ -16,25 +17,50 @@ const vocabList = [
   { latin: "accusāre", eng: "to accuse", fig: "verb", conjugation: "1" },
   { latin: "ācer", eng: "sharp, bitter, pointed, piercing, shrill, sagacious, keen, severe, vigorous", fig: "adjective" },
   { latin: "ācriter", eng: "fiercely", fig: "adverb" },
-  { latin: "āctor", eng: "actor, doer", fig: "noun", gender: "M", genitive: "āctōris" }
+  { latin: "āctor", eng: "actor, doer", fig: "noun", gender: "M", genitive: "āctōris", declension: "3rd"}
 ];
 
+// App state
+let shuffledList = [];
+let currentIndex = 0;
+let score = 0;
+let modeLatinToEng = true;
+let settings = {
+  principalPartsMode: false,
+  genitiveMode: false,
+  genderMode: false,
+  decMode: false,
+  conjugationMode: false
+};
 
+// Shuffle helper
+function shuffle(array) {
+  return [...array].sort(() => Math.random() - 0.5);
+}
+
+// Normalize/clean text
+function cleanText(text) {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
+}
+
+// Prompt generator
 function getPrompt(cur) {
   if (modeLatinToEng) {
     if (cur.fig === "verb") {
       if (settings.principalPartsMode) {
-        return cur.latin; // All forms expected
+        return cur.latin;
       } else {
-        const parts = cur.latin.split(',');
-        return cur.latin.includes("sum") ? parts[1] : parts[1]; // Deponent or normal
+        const parts = cur.latin.split(",");
+        return parts[0]; // Just the first form (infinitive or stem)
       }
     } else if (cur.fig === "noun") {
-      if (settings.genitiveMode) {
-        return `${cur.latin}, ${cur.genitive}`;
-      } else {
-        return cur.latin;
-      }
+      return settings.genitiveMode && cur.genitive
+        ? `${cur.latin}, ${cur.genitive}`
+        : cur.latin;
     } else {
       return cur.latin;
     }
@@ -43,9 +69,11 @@ function getPrompt(cur) {
   }
 }
 
+// Show current question
 function showQuestion() {
   const cur = shuffledList[currentIndex];
   const prompt = getPrompt(cur);
+
   document.getElementById("definition").textContent = prompt;
   document.getElementById("answerInput").value = "";
   document.getElementById("feedback").textContent = "";
@@ -55,14 +83,7 @@ function showQuestion() {
   document.getElementById("answerInput").focus();
 }
 
-function cleanText(text) {
-  return text
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/\[\u0300-\u036f]/g, "")
-    .trim();
-}
-
+// Check answer
 function submitAnswer() {
   const input = cleanText(document.getElementById("answerInput").value);
   const cur = shuffledList[currentIndex];
@@ -71,13 +92,14 @@ function submitAnswer() {
   if (settings.genderMode && cur.fig === "noun") {
     correctRaw += ", " + cur.gender;
   }
-
+if (settings.decMode && cur.fig === "noun") {
+    correctRaw += ", " + cur.declension;
+  }
   if (settings.conjugationMode && cur.fig === "verb") {
     correctRaw += ", " + cur.conjugation;
   }
 
   const correctAnswers = correctRaw.split(',').map(ans => cleanText(ans));
-
   const feedback = document.getElementById("feedback");
   if (!input) return;
 
@@ -92,3 +114,52 @@ function submitAnswer() {
 
   document.getElementById("score").textContent = `Score: ${score}`;
 }
+
+// Go to next question
+function nextQuestion() {
+  currentIndex++;
+  if (currentIndex >= shuffledList.length) {
+    currentIndex = 0;
+    shuffledList = shuffle(vocabList);
+  }
+  showQuestion();
+}
+
+// Start over
+function startOver() {
+  score = 0;
+  currentIndex = 0;
+  shuffledList = shuffle(vocabList);
+  showQuestion();
+}
+
+// Toggle mode
+function toggleMode() {
+  modeLatinToEng = !modeLatinToEng;
+  showQuestion();
+}
+
+// Modal controls
+function openOptions() {
+  document.getElementById("optionsModal").style.display = "block";
+}
+
+function closeOptions() {
+  document.getElementById("optionsModal").style.display = "none";
+}
+
+function applyOptions() {
+  settings.principalPartsMode = document.getElementById("ppMode").checked;
+  settings.genitiveMode = document.getElementById("genMode").checked;
+  settings.genderMode = document.getElementById("genderMode").checked;
+  settings.conjugationMode = document.getElementById("decMode").checked;
+  settings.conjugationMode = document.getElementById("conjMode").checked;
+  closeOptions();
+  showQuestion();
+}
+
+// Initialize app
+window.onload = () => {
+  shuffledList = shuffle(vocabList);
+  showQuestion();
+};

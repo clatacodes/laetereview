@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Latin Vocabulary</title>
-  
   <style>
     :root 
     {
@@ -53,7 +52,7 @@
       margin: 0 0 10px;
     }
 
-    .subtitle 
+    .subtitle
     {
       margin-top: 0;
       font-size: 1.1em;
@@ -74,6 +73,7 @@
       border: 2px solid #e5e7eb;
       border-radius: 8px;
       box-sizing: border-box;
+      margin-bottom: 10px;
     }
 
     input:focus 
@@ -116,7 +116,6 @@
       font-weight: bold;
     }
 
-    
     .modal 
     {
       display: none;
@@ -174,11 +173,13 @@
 <body>
   <div class="card">
     <h1>Latin Vocabulary</h1>
-    <p class="subtitle">"How much do you know?"</p>
-
     <div class="definition" id="definition">Loading...</div>
+
     <input type="text" id="answerInput" placeholder="Type your answer..." />
-    
+    <input type="text" id="genderInput" placeholder="Gender (optional)" />
+    <input type="text" id="declensionInput" placeholder="Declension (optional)" />
+    <input type="text" id="conjugationInput" placeholder="Conjugation (optional)" />
+
     <div>
       <button class="button" onclick="submitAnswer()">Submit</button>
       <button class="button" onclick="nextQuestion()">Next</button>
@@ -198,25 +199,61 @@
     <p style="margin-top:10px">Mode: <strong id="modeLabel"></strong></p>
   </div>
 
-  <!--options -->
+  <!-- Options Modal -->
   <div id="optionsModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeOptions()">&times;</span>
       <h2>Options</h2>
-
       <label><input type="checkbox" id="ppMode"> Verb Principal Parts Mode</label>
       <label><input type="checkbox" id="genMode"> Noun Genitive Mode</label>
       <label><input type="checkbox" id="genderMode"> Noun Gender Mode</label>
       <label><input type="checkbox" id="decMode"> Noun Declension Mode</label>
       <label><input type="checkbox" id="conjMode"> Verb Conjugation Mode</label>
-      
-
       <br/>
       <button class="button" onclick="applyOptions()">Apply</button>
     </div>
   </div>
 
-  
+  <!-- Question Count Modal -->
+  <div id="questionCountModal" class="modal">
+    <div class="modal-content">
+      <h2>Choose Number of Questions</h2>
+      <input type="number" id="questionCountInput" min="1" max="100" />
+      <br/><br/>
+      <button class="button" onclick="applyQuestionCount()">Start</button>
+    </div>
+  </div>
+
   <script src="script.js"></script>
+  <script>
+    // Handle Enter and Space shortcuts
+    document.addEventListener("keydown", (e) => {
+      if (e.code === "Enter") submitAnswer();
+      if (e.code === "Space") {
+        e.preventDefault();
+        nextQuestion();
+      }
+    });
+
+    // Auto show question count on first load
+    window.addEventListener("load", () => {
+      document.getElementById("questionCountInput").max = vocabList.length;
+      document.getElementById("questionCountModal").style.display = "block";
+    });
+
+    function applyQuestionCount() {
+      const count = parseInt(document.getElementById("questionCountInput").value);
+      if (!count || count < 1 || count > vocabList.length) return;
+      shuffledList = shuffle(vocabList).slice(0, count);
+      currentIndex = 0;
+      score = 0;
+      document.getElementById("questionCountModal").style.display = "none";
+      showQuestion();
+    }
+
+    function startOver() {
+      document.getElementById("questionCountModal").style.display = "block";
+    }
+  </script>
 </body>
 </html>

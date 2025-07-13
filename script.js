@@ -1,36 +1,51 @@
 const vocabList = [
-  { latin: "magnus", eng: "big, great" },
-  { latin: "bonus", eng: "good" },
-  { latin: "malus", eng: "bad" },
-  { latin: "canis", eng: "dog" },
-  { latin: "puer", eng: "boy" },
-  { latin: "puella", eng: "girl" },
-  { latin: "ab", eng: "from, by" },
-  { latin: "abīre", eng: "to go away" },
-  { latin: "abhinc", eng: "ago, previously" },
-  { latin: "abōminandus", eng: "detestable, horrible" },
-  { latin: "abstinēns", eng: "refraining from" },
-  { latin: "abstulere", eng: "to takeaway, to withdraw" },
-  { latin: "abesse", eng: "to be away, to be absent, to be distant" },
-  { latin: "ac", eng: "and" },
-  { latin: "idem ac", eng: "the same as" },
-  { latin: "accendere", eng: "to set on fire" },
-  { latin: "accidere", eng: "to happen" }
+  { latin: "a, ab", eng: "from, by", fig: "preposition" },
+  { latin: "abeō, abīre, abīvī, abitus", eng: "to go away", fig: "verb", conjugation: "irregular" },
+  { latin: "abhinc", eng: "ago, previously", fig: "adverb" },
+  { latin: "abōminándus, abōminánda, abōminándum", eng: "detestable, horrible", fig: "adjective" },
+  { latin: "ábstinēns, abstinéntis", eng: "refraining from", fig: "adjective" },
+  { latin: "abstulere", eng: "to takeaway, to withdraw", fig: "verb", conjugation: "irregular" },
+  { latin: "abesse", eng: "to be away, to be absent, to be distant", fig: "verb", conjugation: "irregular" },
+  { latin: "ac", eng: "and", fig: "conjunction" },
+  { latin: "idem ac", eng: "the same as", fig: "phrase" },
+  { latin: "accendere", eng: "to set on fire", fig: "verb", conjugation: "3" },
+  { latin: "accidere", eng: "to happen", fig: "verb", conjugation: "3" },
+  { latin: "accípere", eng: "to receive, to get, to welcome", fig: "verb", conjugation: "3" },
+  { latin: "accúmbere", eng: "to recline", fig: "verb", conjugation: "3" },
+  { latin: "accúrrere", eng: "to run, to run toward, to run up to", fig: "verb", conjugation: "3" },
+  { latin: "accusāre", eng: "to accuse", fig: "verb", conjugation: "1" },
+  { latin: "ācer", eng: "sharp, bitter, pointed, piercing, shrill, sagacious, keen, severe, vigorous", fig: "adjective" },
+  { latin: "ācriter", eng: "fiercely", fig: "adverb" },
+  { latin: "āctor", eng: "actor, doer", fig: "noun", gender: "M", genitive: "āctōris" }
 ];
 
-let shuffledList = [];
-let currentIndex = 0;
-let score = 0;
-let modeLatinToEng = true;
-let questionLimit = vocabList.length;
 
-function shuffle(array) {
-  return array.sort(() => Math.random() - 0.5);
+function getPrompt(cur) {
+  if (modeLatinToEng) {
+    if (cur.fig === "verb") {
+      if (settings.principalPartsMode) {
+        return cur.latin; // All forms expected
+      } else {
+        const parts = cur.latin.split(',');
+        return cur.latin.includes("sum") ? parts[1] : parts[1]; // Deponent or normal
+      }
+    } else if (cur.fig === "noun") {
+      if (settings.genitiveMode) {
+        return `${cur.latin}, ${cur.genitive}`;
+      } else {
+        return cur.latin;
+      }
+    } else {
+      return cur.latin;
+    }
+  } else {
+    return cur.eng;
+  }
 }
 
 function showQuestion() {
   const cur = shuffledList[currentIndex];
-  const prompt = modeLatinToEng ? cur.latin : cur.eng;
+  const prompt = getPrompt(cur);
   document.getElementById("definition").textContent = prompt;
   document.getElementById("answerInput").value = "";
   document.getElementById("feedback").textContent = "";
@@ -40,61 +55,40 @@ function showQuestion() {
   document.getElementById("answerInput").focus();
 }
 
+function cleanText(text) {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\[\u0300-\u036f]/g, "")
+    .trim();
+}
+
 function submitAnswer() {
-  const input = document.getElementById("answerInput").value.trim().toLowerCase();
+  const input = cleanText(document.getElementById("answerInput").value);
   const cur = shuffledList[currentIndex];
-  const correctAnswers = (modeLatinToEng ? cur.eng : cur.latin).toLowerCase().split(',').map(s => s.trim());
+  let correctRaw = modeLatinToEng ? cur.eng : cur.latin;
+
+  if (settings.genderMode && cur.fig === "noun") {
+    correctRaw += ", " + cur.gender;
+  }
+
+  if (settings.conjugationMode && cur.fig === "verb") {
+    correctRaw += ", " + cur.conjugation;
+  }
+
+  const correctAnswers = correctRaw.split(',').map(ans => cleanText(ans));
+
   const feedback = document.getElementById("feedback");
   if (!input) return;
+
   if (correctAnswers.includes(input)) {
-    feedback.textContent = "Great! That is correct!";
+    feedback.textContent = "Yay, that is correct!";
     feedback.className = "feedback correct";
     score++;
   } else {
-    feedback.textContent = `Sorry, that is incorrect. Correct answer: "${correctAnswers.join(', ')}"`;
+    feedback.textContent = `Sorry, that is incorrect. Correct answer: "${correctRaw}"`;
     feedback.className = "feedback incorrect";
   }
+
   document.getElementById("score").textContent = `Score: ${score}`;
 }
-
-function nextQuestion() {
-  currentIndex++;
-  if (currentIndex >= questionLimit) {
-    alert(`You finished! Final score: ${score} out of ${questionLimit}`);
-    startOver();
-  } else {
-    showQuestion();
-  }
-}
-
-function startOver() {
-  score = 0;
-  currentIndex = 0;
-  let input = prompt(`How many words do you want? (Max ${vocabList.length})`);
-  let num = parseInt(input);
-  if (isNaN(num) || num < 1) {
-    num = vocabList.length;
-  } else if (num > vocabList.length) {
-    num = vocabList.length;
-  }
-  questionLimit = num;
-  shuffledList = shuffle([...vocabList]).slice(0, questionLimit);
-  showQuestion();
-}
-
-function toggleMode() {
-  modeLatinToEng = !modeLatinToEng;
-  startOver();
-}
-
-document.addEventListener('keydown', function(event) {
-  const tag = document.activeElement.tagName.toLowerCase();
-  if (tag === 'input') {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      nextQuestion();
-    }
-  }
-});
-
-startOver();

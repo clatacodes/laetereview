@@ -50,7 +50,7 @@ function showQuestion() {
   if (mode === "latToEng") {
     defDiv.textContent = vocab.latin;
   } else {
-    defDiv.textContent = vocab.english;
+    defDiv.textContent = vocab.eng;
   }
 
   document.getElementById("modeLabel").textContent = mode === "latToEng" ? "Latin → English" : "English → Latin";
@@ -65,7 +65,7 @@ function submitAnswer() {
   const declensionInput = document.getElementById("declensionInput").value.trim().toLowerCase();
   const conjugationInput = document.getElementById("conjugationInput").value.trim().toLowerCase();
 
-  let correctAnswer = mode === "latToEng" ? vocab.english : vocab.latin;
+  let correctAnswer = mode === "latToEng" ? vocab.eng : vocab.latin;
   let isCorrect = answer === correctAnswer.toLowerCase();
 
   if (isCorrect && genderMode && vocab.gender) {

@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Latin Vocab Master</title>
+  <title>Latin Vocabulary</title>
+  
   <style>
     :root {
       --main-bg: #f9fafb;
@@ -18,10 +19,10 @@
       font-family: 'Segoe UI', sans-serif;
       background: var(--main-bg);
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      padding: 20px;
+      height: 100vh;
+      padding: 30px;
       color: var(--text-color);
     }
     .card {
@@ -78,6 +79,7 @@
 <body>
   <div class="card">
     <h1>Latin Vocabulary</h1>
+    <p style="margin-top: 0; font-size: 1.1em; color: #6b7280;">"How much do you know?"</p>
     <div class="definition" id="definition">Loading...</div>
     <input type="text" id="answerInput" placeholder="Type your answer..." />
     <div>

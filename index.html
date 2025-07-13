@@ -14,17 +14,24 @@
       --error: #ef4444;
       --text-color: #111827;
     }
-    body {
+
+    html, body {
       margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
       font-family: 'Segoe UI', sans-serif;
       background: var(--main-bg);
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      padding: 30px;
       color: var(--text-color);
+      padding: 20px;
+      overflow-y: auto;
     }
+
     .card {
       background: var(--card-bg);
       padding: 30px;
@@ -33,23 +40,39 @@
       max-width: 600px;
       width: 100%;
       text-align: center;
+      box-sizing: border-box;
     }
+
     h1 {
       color: var(--accent);
       margin: 0 0 10px;
     }
+
+    .subtitle {
+      margin-top: 0;
+      font-size: 1.1em;
+      color: #6b7280;
+    }
+
     .definition {
       font-size: 1.2em;
       margin: 20px 0;
     }
+
     input[type="text"] {
       padding: 12px;
-      width: 80%;
+      width: 100%;
       font-size: 1em;
       border: 2px solid #e5e7eb;
       border-radius: 8px;
+      box-sizing: border-box;
     }
-    input:focus { border-color: var(--accent); }
+
+    input:focus {
+      border-color: var(--accent);
+      outline: none;
+    }
+
     .button {
       padding: 10px 18px;
       margin: 10px 5px;
@@ -61,25 +84,36 @@
       font-size: 1em;
       transition: background 0.3s;
     }
-    .button:hover { background: #4f46e5; }
+
+    .button:hover {
+      background: #4f46e5;
+    }
+
     .feedback {
       margin: 15px;
       font-weight: bold;
       min-height: 1.5em;
     }
+
     .feedback.correct { color: var(--success); }
     .feedback.incorrect { color: var(--error); }
-    .score { margin-bottom: 10px; font-weight: bold; }
+
+    .score {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
     @media (max-width: 600px) {
-      .card { padding: 20px; }
-      input { width: 100%; }
+      .card {
+        padding: 20px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="card">
     <h1>Latin Vocabulary</h1>
-    <p style="margin-top: 0; font-size: 1.1em; color: #6b7280;">"How much do you know?"</p>
+    <p class="subtitle">"How much do you know?"</p>
     <div class="definition" id="definition">Loading...</div>
     <input type="text" id="answerInput" placeholder="Type your answer..." />
     <div>

@@ -8,8 +8,8 @@ Can be switched Latin to English and English to Latin. Various options to includ
 
 
 ## Author's Note
- Made by Clara Jarvis
- Please do not copy me
+ Made by Clara Jarvis.
+ Please do not copy me!!
  Questions or concerns contact claraejarvis@gmail.com
 
 ## Version History

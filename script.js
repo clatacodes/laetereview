@@ -23,6 +23,7 @@ let vocabList = [
 let shuffledList = [];
 let currentIndex = 0;
 let score = 0;
+let questionLimit = null;
 let mode = "latToEng";
 let ppMode = false;
 let genMode = false;
@@ -68,7 +69,10 @@ function submitAnswer()
   // ensure array format
   if (!Array.isArray(correctAnswers)) correctAnswers = [correctAnswers];
 
-  let isCorrect = correctAnswers.some(ans => ans.toLowerCase() === answer);
+  let isCorrect = correctAnswers.some(ans =>
+  ans.toLowerCase().trim().replace(/[^\w\s]/g,' ') ===
+  answer.toLowerCase().trim().replace(/[^\w\s]/g,' '));
+
 
   if (isCorrect && genderMode && vocab.gender) 
   {
@@ -123,12 +127,30 @@ function clearInputs()
   document.getElementById("conjugationInput").value = "";
 }
 
+function applyQuestionCount() 
+{
+  const input = document.getElementById("questionCountInput").value;
+  const count = parseInt(input);
+  if (isNaN(count) || count <= 0) 
+  {
+    alert("Please enter a valid number.");
+    return;
+  }
+
+  questionLimit = count;
+  shuffledList = shuffle(vocabList).slice(0, questionLimit);
+  currentIndex = 0;
+  score = 0;
+  document.getElementById("questionCountModal").style.display = "none";
+  showQuestion();
+}
+
 function startOver() 
 {
   shuffledList = shuffle(vocabList);
   currentIndex = 0;
   score = 0;
-  document.getElementById("questionCountModal").style.display = "none";
+ document.getElementById("questionCountModal").style.display = "block";
   showQuestion();
 }
 

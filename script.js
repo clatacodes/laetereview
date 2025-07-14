@@ -162,7 +162,6 @@ function applyOptions()
   closeOptions();
 }
 
-  window.onload = function () {
-    startOver();
-  };
-</script>
+window.onload = function () {
+  startOver();
+};

@@ -183,7 +183,28 @@ function applyOptions()
   conjMode = document.getElementById("conjMode").checked;
   closeOptions();
 }
+document.addEventListener("keydown", function (event) {
+  const activeElement = document.activeElement;
 
-window.onload = function () {
+  // Prevent triggering while typing in an input except for Enter
+  if (activeElement.tagName === "INPUT" && event.key !== "Enter") {
+    return;
+  }
+
+  if (event.key === "Enter") 
+  {
+    event.preventDefault();
+    submitAnswer();
+  } 
+  else if (event.key === " ") 
+  {
+    event.preventDefault();
+    nextQuestion();
+  }
+});
+
+
+window.onload = function () 
+{
   startOver();
 };

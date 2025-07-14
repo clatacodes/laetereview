@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Laete Latin Vocabulary</title>
   <style>
-    :root 
-    {
+    :root {
       --main-bg: #f9fafb;
       --card-bg: #ffffff;
       --accent: #ffef40;
@@ -15,15 +14,13 @@
       --text-color: #111827;
     }
 
-    html, body 
-    {
+    html, body {
       margin: 0;
       padding: 0;
       height: 100%;
     }
 
-    body 
-    {
+    body {
       font-family: 'Segoe UI', sans-serif;
       background: var(--main-bg);
       display: flex;
@@ -34,8 +31,7 @@
       overflow-y: auto;
     }
 
-    .card 
-    {
+    .card {
       background: var(--card-bg);
       padding: 30px;
       border-radius: 16px;
@@ -46,27 +42,23 @@
       box-sizing: border-box;
     }
 
-    h1 
-    {
+    h1 {
       color: var(--accent);
       margin: 0 0 10px;
     }
 
-    .subtitle
-    {
+    .subtitle {
       margin-top: 0;
       font-size: 1.1em;
       color: #6b7280;
     }
 
-    .definition 
-    {
+    .definition {
       font-size: 1.2em;
       margin: 20px 0;
     }
 
-    input[type="text"] 
-    {
+    input[type="text"] {
       padding: 12px;
       width: 100%;
       font-size: 1em;
@@ -76,14 +68,12 @@
       margin-bottom: 10px;
     }
 
-    input:focus 
-    {
+    input:focus {
       border-color: var(--accent);
       outline: none;
     }
 
-    .button 
-    {
+    .button {
       padding: 10px 18px;
       margin: 10px 5px;
       background: var(--accent);
@@ -95,13 +85,11 @@
       transition: background 0.3s;
     }
 
-    .button:hover 
-    {
+    .button:hover {
       background: #fcfc69;
     }
 
-    .feedback 
-    {
+    .feedback {
       margin: 15px;
       font-weight: bold;
       min-height: 1.5em;
@@ -110,14 +98,12 @@
     .feedback.correct { color: var(--success); }
     .feedback.incorrect { color: var(--error); }
 
-    .score 
-    {
+    .score {
       margin-bottom: 10px;
       font-weight: bold;
     }
 
-    .modal 
-    {
+    .modal {
       display: none;
       position: fixed;
       z-index: 10;
@@ -129,8 +115,7 @@
       background-color: rgba(0,0,0,0.4);
     }
 
-    .modal-content 
-    {
+    .modal-content {
       background-color: #fff;
       margin: 10% auto;
       padding: 20px;
@@ -141,8 +126,7 @@
       text-align: left;
     }
 
-    .close 
-    {
+    .close {
       float: right;
       font-size: 24px;
       font-weight: bold;
@@ -150,21 +134,17 @@
       color: #999;
     }
 
-    .close:hover 
-    {
+    .close:hover {
       color: var(--accent);
     }
 
-    .modal-content label 
-    {
+    .modal-content label {
       display: block;
       margin: 10px 0;
     }
 
-    @media (max-width: 600px) 
-    {
-      .card 
-      {
+    @media (max-width: 600px) {
+      .card {
         padding: 20px;
       }
     }
@@ -223,37 +203,5 @@
       <button class="button" onclick="applyQuestionCount()">Start</button>
     </div>
   </div>
-
-  <script src="script.js"></script>
-  <script>
-    // Handle Enter and Space shortcuts
-    document.addEventListener("keydown", (e) => {
-      if (e.code === "Enter") submitAnswer();
-      if (e.code === "Space") {
-        e.preventDefault();
-        nextQuestion();
-      }
-    });
-
-    // Auto show question count on first load
-    window.addEventListener("load", () => {
-      document.getElementById("questionCountInput").max = vocabList.length;
-      document.getElementById("questionCountModal").style.display = "block";
-    });
-
-    function applyQuestionCount() {
-      const count = parseInt(document.getElementById("questionCountInput").value);
-      if (!count || count < 1 || count > vocabList.length) return;
-      shuffledList = shuffle(vocabList).slice(0, count);
-      currentIndex = 0;
-      score = 0;
-      document.getElementById("questionCountModal").style.display = "none";
-      showQuestion();
-    }
-
-    function startOver() {
-      document.getElementById("questionCountModal").style.display = "block";
-    }
-  </script>
 </body>
 </html>

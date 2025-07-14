@@ -161,3 +161,8 @@ function applyOptions()
   conjMode = document.getElementById("conjMode").checked;
   closeOptions();
 }
+
+  window.onload = function () {
+    startOver();
+  };
+</script>

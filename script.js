@@ -1,26 +1,23 @@
-// vocabulary list 
-//{ latin: "", eng: "", fig: "" },
-//ō, ā, 
-let vocabList = 
-  [
-  { latin: "a, ab", eng: "from, by", fig: "preposition" },
-  { latin: "abeō, abīre, abīvī, abitus", eng: "to go away", fig: "verb", conjugation: "irregular" },
-  { latin: "abhinc", eng: "ago, previously", fig: "adverb" },
-  { latin: "abōminándus, abōminánda, abōminándum", eng: "detestable, horrible", fig: "adjective" },
-  { latin: "ábstinēns, abstinéntis", eng: "refraining from", fig: "adjective" },
-  { latin: "abstulere", eng: "to takeaway, to withdraw", fig: "verb", conjugation: "irregular" },
-  { latin: "abesse", eng: "to be away, to be absent, to be distant", fig: "verb", conjugation: "irregular" },
-  { latin: "ac", eng: "and", fig: "conjunction" },
-  { latin: "idem ac", eng: "the same as", fig: "phrase" },
-  { latin: "accendere", eng: "to set on fire", fig: "verb", conjugation: "3" },
-  { latin: "accidere", eng: "to happen", fig: "verb", conjugation: "3" },
-  { latin: "accípere", eng: "to receive, to get, to welcome", fig: "verb", conjugation: "3" },
-  { latin: "accúmbere", eng: "to recline", fig: "verb", conjugation: "3" },
-  { latin: "accúrrere", eng: "to run, to run toward, to run up to", fig: "verb", conjugation: "3" },
-  { latin: "accusāre", eng: "to accuse", fig: "verb", conjugation: "1" },
-  { latin: "ācer", eng: "sharp, bitter, pointed, piercing, shrill, sagacious, keen, severe, vigorous", fig: "adjective" },
-  { latin: "ācriter", eng: "fiercely", fig: "adverb" },
-  { latin: "āctor", eng: "actor, doer", fig: "noun", gender: "M", genitive: "āctōris", declension: "3rd"}
+// vocabulary list
+let vocabList = [
+  { latin: ["a", "ab"], eng: ["from", "by"], fig: "preposition" },
+  { latin: ["abeō", "abīre", "abīvī", "abitus"], eng: ["to go away"], fig: "verb", conjugation: "irregular" },
+  { latin: ["abhinc"], eng: ["ago", "previously"], fig: "adverb" },
+  { latin: ["abōminándus", "abōminánda", "abōminándum"], eng: ["detestable", "horrible"], fig: "adjective" },
+  { latin: ["ábstinēns", "abstinéntis"], eng: ["refraining from"], fig: "adjective" },
+  { latin: ["abstulere"], eng: ["to takeaway", "to withdraw"], fig: "verb", conjugation: "irregular" },
+  { latin: ["abesse"], eng: ["to be away", "to be absent", "to be distant"], fig: "verb", conjugation: "irregular" },
+  { latin: ["ac", "et"], eng: ["and"], fig: "conjunction" },
+  { latin: ["idem ac"], eng: ["the same as"], fig: "phrase" },
+  { latin: ["accendere"], eng: ["to set on fire"], fig: "verb", conjugation: "3" },
+  { latin: ["accidere"], eng: ["to happen"], fig: "verb", conjugation: "3" },
+  { latin: ["accípere"], eng: ["to receive", "to get", "to welcome"], fig: "verb", conjugation: "3" },
+  { latin: ["accúmbere"], eng: ["to recline"], fig: "verb", conjugation: "3" },
+  { latin: ["accúrrere"], eng: ["to run", "to run toward", "to run up to"], fig: "verb", conjugation: "3" },
+  { latin: ["accusāre"], eng: ["to accuse"], fig: "verb", conjugation: "1" },
+  { latin: ["ācer"], eng: ["sharp", "bitter", "pointed", "piercing", "shrill", "sagacious", "keen", "severe", "vigorous"], fig: "adjective" },
+  { latin: ["ācriter"], eng: ["fiercely"], fig: "adverb" },
+  { latin: ["āctor"], eng: ["actor", "doer"], fig: "noun", gender: "M", genitive: "āctōris", declension: "3rd" }
 ];
 
 let shuffledList = [];
@@ -33,58 +30,69 @@ let genderMode = false;
 let decMode = false;
 let conjMode = false;
 
-function shuffle(array) {
+function shuffle(array) 
+{
   let a = array.slice();
-  for (let i = a.length - 1; i > 0; i--) {
+  for (let i = a.length - 1; i > 0; i--) 
+  {
     const j = Math.floor(Math.random() * (i + 1));
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
 }
 
-function showQuestion() {
+function showQuestion() 
+{
   clearInputs();
   const vocab = shuffledList[currentIndex];
   const defDiv = document.getElementById("definition");
 
-  if (mode === "latToEng") {
-    defDiv.textContent = vocab.latin;
-  } else {
-    defDiv.textContent = vocab.eng;
-  }
+  const displayText = mode === "latToEng" ? vocab.latin[0] : vocab.eng[0];
+  defDiv.textContent = displayText;
 
   document.getElementById("modeLabel").textContent = mode === "latToEng" ? "Latin → English" : "English → Latin";
   document.getElementById("score").textContent = `Score: ${score}/${currentIndex}`;
   document.getElementById("feedback").textContent = "";
 }
 
-function submitAnswer() {
+function submitAnswer() 
+{
   const vocab = shuffledList[currentIndex];
   const answer = document.getElementById("answerInput").value.trim().toLowerCase();
   const genderInput = document.getElementById("genderInput").value.trim().toLowerCase();
   const declensionInput = document.getElementById("declensionInput").value.trim().toLowerCase();
   const conjugationInput = document.getElementById("conjugationInput").value.trim().toLowerCase();
 
-  let correctAnswer = mode === "latToEng" ? vocab.eng : vocab.latin;
-  let isCorrect = answer === correctAnswer.toLowerCase();
+  let correctAnswers = mode === "latToEng" ? vocab.eng : vocab.latin;
 
-  if (isCorrect && genderMode && vocab.gender) {
+  // ensure array format
+  if (!Array.isArray(correctAnswers)) correctAnswers = [correctAnswers];
+
+  let isCorrect = correctAnswers.some(ans => ans.toLowerCase() === answer);
+
+  if (isCorrect && genderMode && vocab.gender) 
+  {
     isCorrect = genderInput === vocab.gender.toLowerCase();
   }
-  if (isCorrect && decMode && vocab.declension) {
+  if (isCorrect && decMode && vocab.declension) 
+  {
     isCorrect = declensionInput === vocab.declension.toLowerCase();
   }
-  if (isCorrect && conjMode && vocab.conjugation) {
+  if (isCorrect && conjMode && vocab.conjugation) 
+  {
     isCorrect = conjugationInput === vocab.conjugation.toLowerCase();
   }
 
   const feedback = document.getElementById("feedback");
-  if (isCorrect) {
+  if (isCorrect) 
+  {
     feedback.textContent = "Correct!";
     feedback.className = "feedback correct";
     score++;
-  } else {
-    feedback.textContent = `Incorrect. Answer: ${correctAnswer}` +
+  } 
+  else 
+  {
+    feedback.textContent = `Incorrect. Acceptable answer(s): ${correctAnswers.join(", ")}` +
       (genderMode && vocab.gender ? ` | Gender: ${vocab.gender}` : "") +
       (decMode && vocab.declension ? ` | Declension: ${vocab.declension}` : "") +
       (conjMode && vocab.conjugation ? ` | Conjugation: ${vocab.conjugation}` : "");
@@ -95,8 +103,11 @@ function submitAnswer() {
   document.getElementById("score").textContent = `Score: ${score}/${currentIndex}`;
 }
 
-function nextQuestion() {
-  if (currentIndex >= shuffledList.length) {
+
+function nextQuestion() 
+{
+  if (currentIndex >= shuffledList.length) 
+  {
     document.getElementById("definition").textContent = "Finished!";
     document.getElementById("feedback").textContent = `Final Score: ${score}/${shuffledList.length}`;
     return;
@@ -104,15 +115,21 @@ function nextQuestion() {
   showQuestion();
 }
 
-function clearInputs() {
+function clearInputs() 
+{
   document.getElementById("answerInput").value = "";
   document.getElementById("genderInput").value = "";
   document.getElementById("declensionInput").value = "";
   document.getElementById("conjugationInput").value = "";
 }
 
-function startOver() {
-  document.getElementById("questionCountModal").style.display = "block";
+function startOver() 
+{
+  shuffledList = shuffle(vocabList);
+  currentIndex = 0;
+  score = 0;
+  document.getElementById("questionCountModal").style.display = "none";
+  showQuestion();
 }
 
 function toggleMode() {
@@ -120,7 +137,8 @@ function toggleMode() {
   showQuestion();
 }
 
-function openOptions() {
+function openOptions() 
+{
   document.getElementById("optionsModal").style.display = "block";
   document.getElementById("ppMode").checked = ppMode;
   document.getElementById("genMode").checked = genMode;
@@ -129,11 +147,13 @@ function openOptions() {
   document.getElementById("conjMode").checked = conjMode;
 }
 
-function closeOptions() {
+function closeOptions() 
+{
   document.getElementById("optionsModal").style.display = "none";
 }
 
-function applyOptions() {
+function applyOptions() 
+{
   ppMode = document.getElementById("ppMode").checked;
   genMode = document.getElementById("genMode").checked;
   genderMode = document.getElementById("genderMode").checked;

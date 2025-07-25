@@ -48,12 +48,22 @@ function showQuestion()
   const vocab = shuffledList[currentIndex];
   const defDiv = document.getElementById("definition");
 
+  if (!vocab || !vocab.latin || !vocab.eng)
+  {
+    defDiv.textContent = "No more questions or invalid vocab entry.";
+    return;
+  }
+
   const displayText = mode === "latToEng" ? vocab.latin[0] : vocab.eng[0];
   defDiv.textContent = displayText;
 
   document.getElementById("modeLabel").textContent = mode === "latToEng" ? "Latin → English" : "English → Latin";
   document.getElementById("score").textContent = `Score: ${score}/${currentIndex}`;
   document.getElementById("feedback").textContent = "";
+  console.log("Current index:", currentIndex);
+console.log("Shuffled list length:", shuffledList.length);
+console.log("Vocab at current index:", shuffledList[currentIndex]);
+
 }
 
 function submitAnswer() 
@@ -151,7 +161,7 @@ function startOver()
   currentIndex = 0;
   score = 0;
  document.getElementById("questionCountModal").style.display = "block";
-  showQuestion();
+  
 }
 
 function toggleMode() {

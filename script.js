@@ -50,7 +50,7 @@ function showQuestion()
 
   if (!vocab || !vocab.latin || !vocab.eng)
   {
-    defDiv.textContent = "No more questions or invalid vocab entry.";
+    defDiv.textContent = "No more questions!";
     return;
   }
 

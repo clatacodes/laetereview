@@ -1,4 +1,6 @@
 // vocabulary list
+// ō ū ā ē c
+// { latin: [""], eng: [""], fig: "", conj:""},
 let vocabList = [
   { latin: ["a", "ab"], eng: ["from", "by"], fig: "preposition" },
   { latin: ["abeō", "abīre", "abīvī", "abitus"], eng: ["to go away"], fig: "verb", conjugation: "irregular" },
@@ -9,15 +11,22 @@ let vocabList = [
   { latin: ["absum, abesse, afui, afuturus"], eng: ["to be away", "to be absent", "to be distant"], fig: "verb", conjugation: "irregular" },
   { latin: ["ac", "et"], eng: ["and"], fig: "conjunction" },
   { latin: ["idem ac"], eng: ["the same as"], fig: "phrase" },
-  { latin: ["accendere"], eng: ["to set on fire"], fig: "verb", conjugation: "3" },
-  { latin: ["accidere"], eng: ["to happen"], fig: "verb", conjugation: "3" },
-  { latin: ["accípere"], eng: ["to receive", "to get", "to welcome"], fig: "verb", conjugation: "3" },
-  { latin: ["accúmbere"], eng: ["to recline"], fig: "verb", conjugation: "3" },
-  { latin: ["accúrrere"], eng: ["to run", "to run toward", "to run up to"], fig: "verb", conjugation: "3" },
+  { latin: ["accendo","accendere", "accendi", "accensus"], eng: ["to set on fire","to kindle" "to light", "to illuminate", "to inflame","to stir up", "to arouse" "to make bright"], fig: "verb", conjugation: "3" },
+  { latin: ["accidō", "accidere", "accidĪ", "-----"], eng: ["to happen"], fig: "verb", conjugation: "3" },
+  { latin: ["accipiō", "accipere", "accēpī", "acceptus"], eng: ["to accept", "to receive", "to get", "to welcome", "to take,", "to grasp","to receive","to accept","to undertake", "to admit","to let in","to hear", "to learn", "to obey"], fig: "verb", conjugation: "3" },
+  { latin: ["accumbo", "accúmbere", "accubui"], eng: ["to recline"], fig: "verb", conjugation: "3" },
+  { latin: ["accurrō", "accurrere", "accurrī"], eng: ["to run", "to run toward", "to run up to", "to run up" "to hasten to","to rush up to", "to rush up" "to charge", "to rush to attack"], fig: "verb", conjugation: "3" },
   { latin: ["accusāre"], eng: ["to accuse"], fig: "verb", conjugation: "1" },
   { latin: ["ācer"], eng: ["sharp", "bitter", "pointed", "piercing", "shrill", "sagacious", "keen", "severe", "vigorous"], fig: "adjective" },
   { latin: ["ācriter"], eng: ["fiercely"], fig: "adverb" },
-  { latin: ["āctor"], eng: ["actor", "doer"], fig: "noun", gender: "M", genitive: "āctōris", declension: "3rd" }
+  { latin: ["āctor"], eng: ["actor", "doer"], fig: "noun", gender: "M", genitive: "āctōris", declension: "3" },
+  { latin: ["abdūcō", "abducere", "abdūxĪ", "abductus"], eng: ["to lead away", "to carry off", "to detach", "to attract away", "to entice", "to seduce", "to charm", "to withdraw"], fig: "verb"), conjugation: "3"},
+  { latin: ["abripiō", "abripere", "abripuĪ", "abreptus"], eng: ["to drag","to snatch","to carry away by force", "to remove away by force", "to wash away", "to blow away","to abduct", "to kidnap"], fig: "verb"), conjugation: "3"},
+  { latin: ["absurdus"], eng: ["out of tune", "discordant", "absurd", "nonsensical", "out of place", "awkward", "uncouth"], fig "adjective" },
+  { latin: ["ac"], eng: ["and","and also","and besides"], fig: "conjunction"},
+  { latin: ["idem ac"], eng: ["the same as","same","the same", "the very same"], fig: "conjunction" },
+  { latin: ["accūsātiō"], eng: ["accusation", "inditement", "act of accusation", "rebuke", "reproof"], fig: "noun", gender: "F", genitive: "accūsātiōnis", declension:"3" }
+  
 ];
 
 let shuffledList = [];

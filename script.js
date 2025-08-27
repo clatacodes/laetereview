@@ -21,7 +21,7 @@ let vocabList = [
   { latin: ["ācriter"], eng: ["fiercely"], fig: "adverb" },
   { latin: ["āctor"], eng: ["actor", "doer"], fig: "noun", gender: "M", genitive: "āctōris", declension: "3" },
   { latin: ["abdūcō", "abducere", "abdūxĪ", "abductus"], eng: [...], fig: "verb", conjugation: "3"},
-  { latin: ["abripiō", "abripere", "abripuĪ", "abreptus"], eng: ["to drag","to snatch","to carry away by force", "to remove away by force", "to wash away", "to blow away","to abduct", "to kidnap"], fig: "verb"), conjugation: "3"},
+  { latin: ["abripiō", "abripere", "abripuĪ", "abreptus"], eng: ["to drag","to snatch","to carry away by force", "to remove away by force", "to wash away", "to blow away","to abduct", "to kidnap"], fig: "verb", conjugation: "3"},
   { latin: ["absurdus"], eng: ["out of tune", "discordant", "absurd", "nonsensical", "out of place", "awkward", "uncouth"], fig: "adjective" },
   { latin: ["ac"], eng: ["and","and also","and besides"], fig: "conjunction"},
   { latin: ["idem ac"], eng: ["the same as","same","the same", "the very same"], fig: "conjunction" },

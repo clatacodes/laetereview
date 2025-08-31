@@ -1,4 +1,4 @@
-// Vocabulary list
+// vocabulary list
 let vocabList = [
 
 { latin: ["ab (a) + abl."], eng: ["away from, from", "by"], fig: "preposition" },
@@ -889,7 +889,8 @@ let total = 0;
 let mode = "latinToEnglish"; // toggle mode
 let questionCount = 20;
 let remainingQuestions = [];
-let options = {
+let options = 
+{
   ppMode: false,
   genMode: false,
   genderMode: false,
@@ -906,11 +907,13 @@ const feedbackEl = document.getElementById("feedback");
 const scoreEl = document.getElementById("score");
 const modeLabel = document.getElementById("modeLabel");
 
-function shuffle(arr) {
+function shuffle(arr) 
+{
   return arr.sort(() => Math.random() - 0.5);
 }
 
-function startQuiz() {
+function startQuiz() 
+{
   score = 0;
   total = 0;
   remainingQuestions = shuffle(vocabList).slice(0, questionCount);
@@ -918,12 +921,15 @@ function startQuiz() {
   updateScore();
 }
 
-function updateScore() {
+function updateScore() 
+{
   scoreEl.textContent = `Score: ${score}/${total}`;
 }
 
-function nextQuestion() {
-  if (remainingQuestions.length === 0) {
+function nextQuestion()
+  {
+  if (remainingQuestions.length === 0)
+  {
     defEl.textContent = "Quiz complete!";
     return;
   }
@@ -931,9 +937,12 @@ function nextQuestion() {
   currentWord = remainingQuestions.pop();
   feedbackEl.textContent = "";
 
-  if (mode === "latinToEnglish") {
+  if (mode === "latinToEnglish")
+  {
     defEl.textContent = currentWord.latin.join(", ");
-  } else {
+  } 
+  else
+  {
     defEl.textContent = currentWord.eng.join(", ");
   }
 
@@ -944,7 +953,8 @@ function nextQuestion() {
   answerInput.focus();
 }
 
-function checkAnswer() {
+function checkAnswer()
+  {
   total++;
   let userAns = answerInput.value.trim().toLowerCase();
   let correctAns =
@@ -955,28 +965,37 @@ function checkAnswer() {
   let isCorrect = correctAns.includes(userAns);
 
   // check optional modes
-  if (options.genderMode && currentWord.gender) {
-    if (genderInput.value.trim().toLowerCase() !== currentWord.gender.toLowerCase()) {
+  if (options.genderMode && currentWord.gender)
+  {
+    if (genderInput.value.trim().toLowerCase() !== currentWord.gender.toLowerCase())
+    {
       isCorrect = false;
     }
   }
-  if (options.decMode && currentWord.declension) {
-    if (declensionInput.value.trim() !== currentWord.declension) {
+  if (options.decMode && currentWord.declension) 
+  {
+    if (declensionInput.value.trim() !== currentWord.declension) 
+    {
       isCorrect = false;
     }
   }
-  if (options.conjMode && currentWord.conj) {
-    if (conjugationInput.value.trim() !== currentWord.conj) {
+  if (options.conjMode && currentWord.conj)
+  {
+    if (conjugationInput.value.trim() !== currentWord.conj)
+    {
       isCorrect = false;
     }
   }
 
-  if (isCorrect) {
+  if (isCorrect)
+  {
     feedbackEl.textContent = "Correct!";
     feedbackEl.className = "feedback correct";
     score++;
-  } else {
-    feedbackEl.textContent = `Incorrect. Correct: ${correctAns.join(", ")}`;
+  } 
+  else
+  {
+    feedbackEl.textContent = `Sorry! That is incorrect. Correct: ${correctAns.join(", ")}`;
     feedbackEl.className = "feedback incorrect";
   }
 
@@ -988,24 +1007,28 @@ document.getElementById("nextBtn").addEventListener("click", nextQuestion);
 document.getElementById("restartBtn").addEventListener("click", () => {
   document.getElementById("questionCountModal").style.display = "block";
 });
-document.getElementById("toggleModeBtn").addEventListener("click", () => {
+document.getElementById("toggleModeBtn").addEventListener("click", () =>
+  {
   mode = mode === "latinToEnglish" ? "englishToLatin" : "latinToEnglish";
   modeLabel.textContent = mode === "latinToEnglish" ? "Latin → English" : "English → Latin";
 });
-document.getElementById("optionsBtn").addEventListener("click", () => {
+document.getElementById("optionsBtn").addEventListener("click", () =>
+  {
   document.getElementById("optionsModal").style.display = "block";
 });
-document.getElementById("closeOptionsBtn").addEventListener("click", () => {
+document.getElementById("closeOptionsBtn").addEventListener("click", () =>
+  {
   document.getElementById("optionsModal").style.display = "none";
 });
-document.getElementById("applyOptionsBtn").addEventListener("click", () => {
+document.getElementById("applyOptionsBtn").addEventListener("click", () =>
+  {
   options.ppMode = document.getElementById("ppMode").checked;
   options.genMode = document.getElementById("genMode").checked;
   options.genderMode = document.getElementById("genderMode").checked;
   options.decMode = document.getElementById("decMode").checked;
   options.conjMode = document.getElementById("conjMode").checked;
 
-  // toggle input visibility
+  // toggle input 
   genderInput.style.display = options.genderMode ? "block" : "none";
   declensionInput.style.display = options.decMode ? "block" : "none";
   conjugationInput.style.display = options.conjMode ? "block" : "none";
@@ -1013,7 +1036,8 @@ document.getElementById("applyOptionsBtn").addEventListener("click", () => {
   document.getElementById("optionsModal").style.display = "none";
 });
 
-document.getElementById("startQuizBtn").addEventListener("click", () => {
+document.getElementById("startQuizBtn").addEventListener("click", () =>
+  {
   let val = parseInt(document.getElementById("questionCountInput").value, 10);
   if (!isNaN(val) && val > 0) questionCount = val;
   document.getElementById("questionCountModal").style.display = "none";
@@ -1021,18 +1045,22 @@ document.getElementById("startQuizBtn").addEventListener("click", () => {
 });
 
 // keyboard shortcuts
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
+document.addEventListener("keydown", (e) =>
+  {
+  if (e.key === "Enter")
+  {
     e.preventDefault();
     document.getElementById("submitBtn").click();
   }
-  if (e.code === "Space") {
+  if (e.code === "Space")
+  {
     e.preventDefault();
     document.getElementById("nextBtn").click();
   }
 });
 
-// start immediately with question count modal
-window.onload = () => {
+// start immediately 
+window.onload = () =>
+  {
   document.getElementById("questionCountModal").style.display = "block";
 };

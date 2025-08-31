@@ -885,7 +885,6 @@
 { latin: ["vulnus", "vulneris"], eng: ["wound"], fig: "noun", gender: "N", genitive: "vulneris", declension: "3" },
 { latin: ["vultus", "vultus"], eng: ["countenance, face"], fig: "noun", gender: "M", genitive: "vultus", declension: "4" },
 
- ----jGRASP: Operation complete.
    private static String parseLine(String line) 
    {
       // split main Latin/English parts

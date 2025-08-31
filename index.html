@@ -52,7 +52,7 @@
       min-height: 1.5em;
     }
 
-    input[type="text"] {
+    input[type="text"], input[type="number"] {
       padding: 12px;
       width: 100%;
       font-size: 1em;
@@ -151,9 +151,9 @@
     <div class="definition" id="definition">Loading...</div>
 
     <input type="text" id="answerInput" placeholder="Type your answer..." autocomplete="off">
-    <input type="text" id="genderInput" placeholder="Gender (optional)" autocomplete="off">
-    <input type="text" id="declensionInput" placeholder="Declension (optional)" autocomplete="off">
-    <input type="text" id="conjugationInput" placeholder="Conjugation (optional)" autocomplete="off">
+    <input type="text" id="genderInput" placeholder="Gender (optional)" autocomplete="off" style="display:none;">
+    <input type="text" id="declensionInput" placeholder="Declension (optional)" autocomplete="off" style="display:none;">
+    <input type="text" id="conjugationInput" placeholder="Conjugation (optional)" autocomplete="off" style="display:none;">
 
     <div>
       <button class="button" id="submitBtn">Submit</button>
@@ -198,7 +198,8 @@
       <button class="button" id="startQuizBtn">Start</button>
     </div>
   </div>
-  <script src="script.js"></script>
 
+  <!-- main quiz logic -->
+  <script src="quiz.js"></script>
 </body>
 </html>

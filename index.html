@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Laete Latin Vocabulary</title>
   <style>
-    :root 
-    {
+    :root {
       --main-bg: #f9fafb;
       --card-bg: #ffffff;
       --accent: #ffe854;
@@ -15,8 +14,7 @@
       --text-color: #111827;
     }
 
-    body 
-    {
+    body {
       font-family: 'Segoe UI', sans-serif;
       background: var(--main-bg);
       margin: 0;
@@ -28,8 +26,7 @@
       min-height: 100vh;
     }
 
-    .card 
-    {
+    .card {
       background: var(--card-bg);
       padding: 30px;
       border-radius: 16px;
@@ -39,27 +36,23 @@
       text-align: center;
     }
 
-    h1 
-    {
+    h1 {
       color: var(--accent);
       margin: 0 0 10px;
     }
 
-    .subtitle 
-    {
+    .subtitle {
       margin-top: 0;
       color: #6b7280;
     }
 
-    .definition 
-    {
+    .definition {
       font-size: 1.2em;
       margin: 20px 0;
       min-height: 1.5em;
     }
 
-    input[type="text"] 
-    {
+    input[type="text"] {
       padding: 12px;
       width: 100%;
       font-size: 1em;
@@ -69,14 +62,12 @@
       margin-bottom: 10px;
     }
 
-    input:focus 
-    {
+    input:focus {
       border-color: var(--accent);
       outline: none;
     }
 
-    .button 
-    {
+    .button {
       padding: 10px 18px;
       margin: 10px 5px;
       background: var(--accent);
@@ -88,13 +79,11 @@
       transition: background 0.3s;
     }
 
-    .button:hover 
-    {
+    .button:hover {
       background: #ffd700;
     }
 
-    .feedback 
-    {
+    .feedback {
       margin: 15px;
       font-weight: bold;
       min-height: 1.5em;
@@ -103,14 +92,12 @@
     .correct { color: var(--success); }
     .incorrect { color: var(--error); }
 
-    .score 
-    {
+    .score {
       margin-bottom: 10px;
       font-weight: bold;
     }
 
-    .modal 
-    {
+    .modal {
       display: none;
       position: fixed;
       z-index: 10;
@@ -121,8 +108,7 @@
       background-color: rgba(0,0,0,0.4);
     }
 
-    .modal-content 
-    {
+    .modal-content {
       background-color: #fff;
       margin: 10% auto;
       padding: 20px;
@@ -133,8 +119,7 @@
       text-align: left;
     }
 
-    .close
-    {
+    .close {
       float: right;
       font-size: 24px;
       font-weight: bold;
@@ -142,19 +127,16 @@
       color: #999;
     }
 
-    .close:hover
-    {
+    .close:hover {
       color: var(--accent);
     }
 
-    .modal-content label
-    {
+    .modal-content label {
       display: block;
       margin: 10px 0;
     }
 
-    @media (max-width: 600px)
-    {
+    @media (max-width: 600px) {
       .card {
         padding: 20px;
       }
@@ -195,7 +177,7 @@
   <!-- options modal -->
   <div id="optionsModal" class="modal">
     <div class="modal-content">
-      <span class="close">&times;</span>
+      <span id="closeOptionsBtn" class="close">&times;</span>
       <h2>Options</h2>
       <label><input type="checkbox" id="ppMode"> Verb Principal Parts Mode</label>
       <label><input type="checkbox" id="genMode"> Noun Genitive Mode</label>

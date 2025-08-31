@@ -1,31 +1,32 @@
 // vocabulary list
 // ō ū ā ē c
 // { latin: [""], eng: [""], fig: "", conj:""},
-let vocabList = [
-  { latin: ["a", "ab"], eng: ["from", "by"], fig: "preposition" },
-  { latin: ["abeō", "abīre", "abīvī", "abitus"], eng: ["to go away"], fig: "verb", conjugation: "irregular" },
-  { latin: ["abhinc"], eng: ["ago", "previously"], fig: "adverb" },
-  { latin: ["abōminándus", "abōminánda", "abōminándum"], eng: ["detestable", "horrible"], fig: "adjective" },
-  { latin: ["abstineo, abstinere, abstinui, abstentus "], eng: ["to refrain from"], fig: "verb", conjugation: "2"},
-  { latin: ["abstulo, abstulere, ---, ---"], eng: ["to takeaway", "to withdraw"], fig: "verb", conjugation: "irregular" },
-  { latin: ["absum, abesse, afui, afuturus"], eng: ["to be away", "to be absent", "to be distant"], fig: "verb", conjugation: "irregular" },
-  { latin: ["ac", "et"], eng: ["and"], fig: "conjunction" },
-  { latin: ["idem ac"], eng: ["the same as"], fig: "phrase" },
-  { latin: ["accendo","accendere", "accendi", "accensus"], eng: ["to set on fire", "to kindle", "to light", "to illuminate", "to inflame", "to stir up", "to arouse", "to make bright"], fig: "verb", conjugation: "3" },
-  { latin: ["accidō", "accidere", "accidĪ", "-----"], eng: ["to happen"], fig: "verb", conjugation: "3" },
-  { latin: ["accipiō", "accipere", "accēpī", "acceptus"], eng: ["to accept", "to receive", "to get", "to welcome", "to take,", "to grasp","to receive","to accept","to undertake", "to admit","to let in","to hear", "to learn", "to obey"], fig: "verb", conjugation: "3" },
-  { latin: ["accumbo", "accúmbere", "accubui"], eng: ["to recline"], fig: "verb", conjugation: "3" },
-  { latin: ["accurrō", "accurrere", "accurrī"], eng: ["to run", "to run toward", "to run up to", "to run up" "to hasten to","to rush up to", "to rush up" "to charge", "to rush to attack"], fig: "verb", conjugation: "3" },
-  { latin: ["accusāre"], eng: ["to accuse"], fig: "verb", conjugation: "1" },
-  { latin: ["ācer"], eng: ["sharp", "bitter", "pointed", "piercing", "shrill", "sagacious", "keen", "severe", "vigorous"], fig: "adjective" },
-  { latin: ["ācriter"], eng: ["fiercely"], fig: "adverb" },
-  { latin: ["āctor"], eng: ["actor", "doer"], fig: "noun", gender: "M", genitive: "āctōris", declension: "3" },
-  { latin: ["abdūcō", "abducere", "abdūxĪ", "abductus"], eng: [...], fig: "verb", conjugation: "3"},
-  { latin: ["abripiō", "abripere", "abripuĪ", "abreptus"], eng: ["to drag","to snatch","to carry away by force", "to remove away by force", "to wash away", "to blow away","to abduct", "to kidnap"], fig: "verb", conjugation: "3"},
-  { latin: ["absurdus"], eng: ["out of tune", "discordant", "absurd", "nonsensical", "out of place", "awkward", "uncouth"], fig: "adjective" },
-  { latin: ["ac"], eng: ["and","and also","and besides"], fig: "conjunction"},
-  { latin: ["idem ac"], eng: ["the same as","same","the same", "the very same"], fig: "conjunction" },
-  { latin: ["accūsātiō"], eng: ["accusation", "inditement", "act of accusation", "rebuke", "reproof"], fig: "noun", gender: "F", genitive: "accūsātiōnis", declension:"3" },
+
+<script>
+    // Vocabulary list
+    let vocabList = [
+      { latin: ["a", "ab"], eng: ["from", "by"], fig: "preposition" },
+      { latin: ["abeō", "abīre", "abīvī", "abitus"], eng: ["to go away"], fig: "verb", conjugation: "irregular" },
+      { latin: ["abhinc"], eng: ["ago", "previously"], fig: "adverb" },
+      { latin: ["abōminándus", "abōminánda", "abōminándum"], eng: ["detestable", "horrible"], fig: "adjective" },
+      { latin: ["abstineo", "abstinere", "abstinui", "abstentus"], eng: ["to refrain from"], fig: "verb", conjugation: "2"},
+      { latin: ["abstulo", "abstulere"], eng: ["to take away", "to withdraw"], fig: "verb", conjugation: "irregular" },
+      { latin: ["absum", "abesse", "afui", "afuturus"], eng: ["to be away", "to be absent", "to be distant"], fig: "verb", conjugation: "irregular" },
+      { latin: ["ac", "et"], eng: ["and","and also","and besides"], fig: "conjunction" },
+      { latin: ["idem ac"], eng: ["the same as","same","the very same"], fig: "phrase" },
+      { latin: ["accendo","accendere", "accendi", "accensus"], eng: ["to set on fire", "to kindle", "to light", "to illuminate", "to inflame", "to stir up", "to arouse", "to make bright"], fig: "verb", conjugation: "3" },
+      { latin: ["accidō", "accidere", "accidī"], eng: ["to happen"], fig: "verb", conjugation: "3" },
+      { latin: ["accipiō", "accipere", "accēpī", "acceptus"], eng: ["to accept", "to receive", "to welcome", "to grasp", "to undertake", "to admit", "to let in", "to hear", "to learn", "to obey"], fig: "verb", conjugation: "3" },
+      { latin: ["accumbo", "accumbere", "accubui"], eng: ["to recline"], fig: "verb", conjugation: "3" },
+      { latin: ["accurrō", "accurrere", "accurrī"], eng: ["to run", "to run toward", "to run up to", "to run up", "to hasten to","to rush up to", "to rush up", "to charge", "to rush to attack"], fig: "verb", conjugation: "3" },
+      { latin: ["accusāre"], eng: ["to accuse"], fig: "verb", conjugation: "1" },
+      { latin: ["ācer"], eng: ["sharp", "bitter", "keen", "vigorous"], fig: "adjective" },
+      { latin: ["ācriter"], eng: ["fiercely"], fig: "adverb" },
+      { latin: ["āctor"], eng: ["actor", "doer"], fig: "noun", gender: "M", genitive: "āctōris", declension: "3" },
+      { latin: ["abdūcō", "abducere", "abdūxī", "abductus"], eng: ["to lead away", "to abduct"], fig: "verb", conjugation: "3"},
+      { latin: ["abripiō", "abripere", "abripuī", "abreptus"], eng: ["to drag","to snatch","to carry away by force", "to wash away", "to blow away","to abduct", "to kidnap"], fig: "verb", conjugation: "3"},
+      { latin: ["absurdus"], eng: ["absurd", "nonsensical", "awkward"], fig: "adjective" },
+      { latin: ["accūsātiō"], eng: ["accusation", "indictment", "rebuke"], fig: "noun", gender: "F", genitive: "accūsātiōnis", declension:"3" },
 { latin: ["ab (a) + abl."], eng: ["away from, from", "by"], fig: "preposition" },
 { latin: ["abeo", "abire", "abii", "abitum"], eng: ["to go away, depart", "to die", "to disappear"], fig: "verb", conjugation: "irregular" },
 { latin: ["absens", "absentis"], eng: ["absent, away"], fig: "adjective" },
@@ -908,235 +909,214 @@ let vocabList = [
 
 
 // Quiz state variables
-let shuffledList = [];
-let currentIndex = 0;
-let score = 0;
-let questionLimit = null;
-let mode = "latToEng";
-let ppMode = false;
-let genMode = false;
-let genderMode = false;
-let decMode = false;
-let conjMode = false;
+    let shuffledList = [];
+    let currentIndex = 0;
+    let score = 0;
+    let questionLimit = null;
+    let mode = "latToEng";
+    let ppMode = false;
+    let genMode = false;
+    let genderMode = false;
+    let decMode = false;
+    let conjMode = false;
 
-//  elements
-const definitionEl = document.getElementById("definition");
-const answerInputEl = document.getElementById("answerInput");
-const genderInputEl = document.getElementById("genderInput");
-const declensionInputEl = document.getElementById("declensionInput");
-const conjugationInputEl = document.getElementById("conjugationInput");
-const feedbackEl = document.getElementById("feedback");
-const scoreEl = document.getElementById("score");
-const modeLabelEl = document.getElementById("modeLabel");
-const questionCountModalEl = document.getElementById("questionCountModal");
-const optionsModalEl = document.getElementById("optionsModal");
-const questionCountInputEl = document.getElementById("questionCountInput");
+    // Elements
+    const definitionEl = document.getElementById("definition");
+    const answerInputEl = document.getElementById("answerInput");
+    const genderInputEl = document.getElementById("genderInput");
+    const declensionInputEl = document.getElementById("declensionInput");
+    const conjugationInputEl = document.getElementById("conjugationInput");
+    const feedbackEl = document.getElementById("feedback");
+    const scoreEl = document.getElementById("score");
+    const modeLabelEl = document.getElementById("modeLabel");
+    const questionCountModalEl = document.getElementById("questionCountModal");
+    const optionsModalEl = document.getElementById("optionsModal");
+    const questionCountInputEl = document.getElementById("questionCountInput");
 
-// initialize the quiz
-function init() 
-{
-  bindEvents();
-  startOver();
-}
+    // Init
+    function init() 
+    {
+      bindEvents();
+      startOver();
+    }
 
-//  event listeners
-function bindEvents() 
-{
-  document.getElementById("submitBtn").addEventListener("click", submitAnswer);
-  document.getElementById("nextBtn").addEventListener("click", nextQuestion);
-  document.getElementById("toggleModeBtn").addEventListener("click", toggleMode);
-  document.getElementById("optionsBtn").addEventListener("click", openOptions);
-  document.getElementById("restartBtn").addEventListener("click", startOver);
-  document.getElementById("startQuizBtn").addEventListener("click", applyQuestionCount);
-  document.getElementById("applyOptionsBtn").addEventListener("click", applyOptions);
-  document.getElementById("closeOptionsBtn").addEventListener("click", closeOptions);
-  
-  document.addEventListener("keydown", handleKeydown);
-}
+    // Event listeners
+    function bindEvents()
+      {
+      document.getElementById("submitBtn").addEventListener("click", submitAnswer);
+      document.getElementById("nextBtn").addEventListener("click", nextQuestion);
+      document.getElementById("toggleModeBtn").addEventListener("click", toggleMode);
+      document.getElementById("optionsBtn").addEventListener("click", openOptions);
+      document.getElementById("restartBtn").addEventListener("click", startOver);
+      document.getElementById("startQuizBtn").addEventListener("click", applyQuestionCount);
+      document.getElementById("applyOptionsBtn").addEventListener("click", applyOptions);
+      document.getElementById("closeOptionsBtn").addEventListener("click", closeOptions);
+      document.addEventListener("keydown", handleKeydown);
+    }
 
-// keyboard events
-function handleKeydown(event)
-  {
-  const activeElement = document.activeElement;
-  if (activeElement.tagName === "INPUT" && event.key !== "Enter") return;
-  
-  if (event.key === "Enter") 
-  {
-    event.preventDefault();
-    submitAnswer();
-  } 
-  else if (event.key === " ") 
-  {
-    event.preventDefault();
-    nextQuestion();
-  }
-}
+    // keyboard events
+    function handleKeydown(event)
+      {
+      const activeElement = document.activeElement;
+      if (activeElement.tagName === "INPUT" && event.key !== "Enter") return;
+      if (event.key === "Enter") 
+      {
+        event.preventDefault();
+        submitAnswer();
+      } 
+      else if (event.key === " ") 
+      {
+        event.preventDefault();
+        nextQuestion();
+      }
+    }
 
-// Shuffle array 
-function shuffle(array) 
-{
-  const a = array.slice();
-  for (let i = a.length - 1; i > 0; i--) 
-  {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
+    // Shuffle
+    function shuffle(array) 
+    {
+      const a = array.slice();
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
 
-// current question
-function showQuestion() 
-{
-  clearInputs();
-  
-  if (currentIndex >= shuffledList.length) 
-  {
-    definitionEl.textContent = "Finished!";
-    feedbackEl.textContent = `Final Score: ${score}/${shuffledList.length}`;
-    return;
-  }
-  
-  const vocab = shuffledList[currentIndex];
-  const displayText = mode === "latToEng" ? vocab.latin[0] : vocab.eng[0];
-  
-  definitionEl.textContent = displayText;
-  modeLabelEl.textContent = mode === "latToEng" ? "Latin → English" : "English → Latin";
-  scoreEl.textContent = `Score: ${score}/${currentIndex}`;
-  feedbackEl.textContent = "";
-}
+    // Show question
+    function showQuestion() 
+    {
+      clearInputs();
+      if (currentIndex >= shuffledList.length) 
+      {
+        definitionEl.textContent = "Finished!";
+        feedbackEl.textContent = `Final Score: ${score}/${shuffledList.length}`;
+        return;
+      }
+      const vocab = shuffledList[currentIndex];
+      const displayText = mode === "latToEng" ? vocab.latin[0] : vocab.eng[0];
+      definitionEl.textContent = displayText;
+      modeLabelEl.textContent = mode === "latToEng" ? "Latin → English" : "English → Latin";
+      scoreEl.textContent = `Score: ${score}/${shuffledList.length}`;
+      feedbackEl.textContent = "";
+    }
 
-// Clear input fields
-function clearInputs() 
-{
-  answerInputEl.value = "";
-  genderInputEl.value = "";
-  declensionInputEl.value = "";
-  conjugationInputEl.value = "";
-}
+    // clear inputs
+    function clearInputs() 
+    {
+      answerInputEl.value = "";
+      genderInputEl.value = "";
+      declensionInputEl.value = "";
+      conjugationInputEl.value = "";
+    }
 
-// Check if answer is correct
-function submitAnswer() 
-{
-  const vocab = shuffledList[currentIndex];
-  if (!vocab) return;
-  
-  const answer = answerInputEl.value.trim().toLowerCase();
-  const genderInput = genderInputEl.value.trim().toLowerCase();
-  const declensionInput = declensionInputEl.value.trim().toLowerCase();
-  const conjugationInput = conjugationInputEl.value.trim().toLowerCase();
-  
-  let correctAnswers = mode === "latToEng" ? vocab.eng : vocab.latin;
-  if (!Array.isArray(correctAnswers)) correctAnswers = [correctAnswers];
-  
-  // Normalize strings for comparison
-  const normalizedAnswer = answer.replace(/[^\w\s]/g, ' ');
-  let isCorrect = correctAnswers.some(ans => 
-    ans.toLowerCase().trim().replace(/[^\w\s]/g, ' ') === normalizedAnswer
-  );
-  
-  // check additional properties if enabled
-  if (isCorrect && genderMode && vocab.gender) 
-  {
-    isCorrect = genderInput === vocab.gender.toLowerCase();
-  }
-  
-  if (isCorrect && decMode && vocab.declension) 
-  {
-    isCorrect = declensionInput === vocab.declension.toLowerCase();
-  }
-  
-  if (isCorrect && conjMode && vocab.conjugation) 
-  {
-    isCorrect = conjugationInput === vocab.conjugation.toLowerCase();
-  }
-  
-  // feedback
-  if (isCorrect) 
-  {
-    feedbackEl.textContent = "Correct!";
-    feedbackEl.className = "feedback correct";
-    score++;
-  } 
-  else 
-  {
-    let feedbackText = `Incorrect. Acceptable answer(s): ${correctAnswers.join(", ")}`;
-    
-    if (genderMode && vocab.gender) feedbackText += ` | Gender: ${vocab.gender}`;
-    if (decMode && vocab.declension) feedbackText += ` | Declension: ${vocab.declension}`;
-    if (conjMode && vocab.conjugation) feedbackText += ` | Conjugation: ${vocab.conjugation}`;
-    
-    feedbackEl.textContent = feedbackText;
-    feedbackEl.className = "feedback incorrect";
-  }
-  
-  currentIndex++;
-  scoreEl.textContent = `Score: ${score}/${currentIndex}`;
-}
+    // submit answer
+    function submitAnswer() 
+    {
+      const vocab = shuffledList[currentIndex];
+      if (!vocab) return;
+      const answer = answerInputEl.value.trim().toLowerCase();
+      const genderInput = genderInputEl.value.trim().toLowerCase();
+      const declensionInput = declensionInputEl.value.trim().toLowerCase();
+      const conjugationInput = conjugationInputEl.value.trim().toLowerCase();
+      let correctAnswers = mode === "latToEng" ? vocab.eng : vocab.latin;
+      if (!Array.isArray(correctAnswers)) correctAnswers = [correctAnswers];
+      const normalizedAnswer = answer.replace(/[^\w\s]/g, ' ');
+      let isCorrect = correctAnswers.some(ans =>
+        ans.toLowerCase().trim().replace(/[^\w\s]/g, ' ') === normalizedAnswer
+      );
+      if (isCorrect && genderMode && vocab.gender) 
+      {
+        isCorrect = genderInput === vocab.gender.toLowerCase();
+      }
+      if (isCorrect && decMode && vocab.declension)
+      {
+        isCorrect = declensionInput === vocab.declension.toLowerCase();
+      }
+      if (isCorrect && conjMode && vocab.conjugation) 
+      {
+        isCorrect = conjugationInput === vocab.conjugation.toLowerCase();
+      }
+      if (isCorrect) 
+      {
+        feedbackEl.textContent = "Correct!";
+        feedbackEl.className = "feedback correct";
+        score++;
+      } 
+      else 
+      {
+        let feedbackText = `Incorrect. Acceptable answer(s): ${correctAnswers.join(", ")}`;
+        if (genderMode && vocab.gender) feedbackText += ` | Gender: ${vocab.gender}`;
+        if (decMode && vocab.declension) feedbackText += ` | Declension: ${vocab.declension}`;
+        if (conjMode && vocab.conjugation) feedbackText += ` | Conjugation: ${vocab.conjugation}`;
+        feedbackEl.textContent = feedbackText;
+        feedbackEl.className = "feedback incorrect";
+      }
+      currentIndex++;
+      scoreEl.textContent = `Score: ${score}/${shuffledList.length}`;
+    }
 
-// Move to next question
-function nextQuestion() 
-{
-  showQuestion();
-}
+    // next
+    function nextQuestion() 
+    {
+      showQuestion();
+    }
 
-// toggle between Latin to English and English to Latin modes
-function toggleMode() 
-{
-  mode = mode === "latToEng" ? "engToLat" : "latToEng";
-  showQuestion();
-}
+    // toggle mode
+    function toggleMode() 
+    {
+      mode = mode === "latToEng" ? "engToLat" : "latToEng";
+      showQuestion();
+    }
 
-// start a new quiz
-function startOver() 
-{
-  shuffledList = shuffle(vocabList);
-  currentIndex = 0;
-  score = 0;
-  questionCountModalEl.style.display = "block";
-}
+    // Start over
+    function startOver() 
+    {
+      shuffledList = shuffle(vocabList);
+      currentIndex = 0;
+      score = 0;
+      questionCountModalEl.style.display = "block";
+    }
 
-// Apply selected question count
-function applyQuestionCount() 
-{
-  const count = parseInt(questionCountInputEl.value);
-  if (isNaN(count) || count <= 0) 
-  {
-    alert("Please enter a valid number.");
-    return;
-  }
-  
-  questionLimit = count;
-  shuffledList = shuffle(vocabList).slice(0, questionLimit);
-  currentIndex = 0;
-  score = 0;
-  questionCountModalEl.style.display = "none";
-  showQuestion();
-}
+    // apply question count
+    function applyQuestionCount()
+      {
+      const count = parseInt(questionCountInputEl.value);
+      if (isNaN(count) || count <= 0)
+      {
+        alert("Please enter a valid number.");
+        return;
+      }
+      questionLimit = count;
+      shuffledList = shuffle(vocabList).slice(0, questionLimit);
+      currentIndex = 0;
+      score = 0;
+      questionCountModalEl.style.display = "none";
+      showQuestion();
+    }
 
+    // options modal
+    function openOptions()
+      {
+      document.getElementById("ppMode").checked = ppMode;
+      document.getElementById("genMode").checked = genMode;
+      document.getElementById("genderMode").checked = genderMode;
+      document.getElementById("decMode").checked = decMode;
+      document.getElementById("conjMode").checked = conjMode;
+      optionsModalEl.style.display = "block";
+    }
+    function closeOptions()
+      {
+      optionsModalEl.style.display = "none";
+    }
+    function applyOptions() 
+    {
+      ppMode = document.getElementById("ppMode").checked;
+      genMode = document.getElementById("genMode").checked;
+      genderMode = document.getElementById("genderMode").checked;
+      decMode = document.getElementById("decMode").checked;
+      conjMode = document.getElementById("conjMode").checked;
+      closeOptions();
+    }
 
-function openOptions() 
-{
-  document.getElementById("ppMode").checked = ppMode;
-  document.getElementById("genMode").checked = genMode;
-  document.getElementById("genderMode").checked = genderMode;
-  document.getElementById("decMode").checked = decMode;
-  document.getElementById("conjMode").checked = conjMode;
-  optionsModalEl.style.display = "block";
-}
-
-function closeOptions()
-  {
-  optionsModalEl.style.display = "none";
-}
-
-function applyOptions() 
-{
-  ppMode = document.getElementById("ppMode").checked;
-  genMode = document.getElementById("genMode").checked;
-  genderMode = document.getElementById("genderMode").checked;
-  decMode = document.getElementById("decMode").checked;
-  conjMode = document.getElementById("conjMode").checked;
-  closeOptions();
-}
-
-window.addEventListener("DOMContentLoaded", init);
+    window.addEventListener("DOMContentLoaded", init);
+  </script>

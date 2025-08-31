@@ -1,10 +1,6 @@
-// vocabulary list
-// ō ū ā ē c
-// { latin: [""], eng: [""], fig: "", conj:""},
-  // Vocabulary list
-  let vocabList = 
-    [
-    
+// Vocabulary list
+let vocabList = [
+
 { latin: ["ab (a) + abl."], eng: ["away from, from", "by"], fig: "preposition" },
 { latin: ["abeo", "abire", "abii", "abitum"], eng: ["to go away, depart", "to die", "to disappear"], fig: "verb", conjugation: "irregular" },
 { latin: ["absens", "absentis"], eng: ["absent, away"], fig: "adjective" },
@@ -883,336 +879,118 @@
 { latin: ["vulgus", "vulgi"], eng: ["the common people, mob, rabble"], fig: "noun", gender: "M", genitive: "vulgi", declension: "2" },
 { latin: ["vulnero", "vulnerare", "vulneravi", "vulneratum"], eng: ["to wound, harm, distress"], fig: "verb", conjugation: "irregular" },
 { latin: ["vulnus", "vulneris"], eng: ["wound"], fig: "noun", gender: "N", genitive: "vulneris", declension: "3" },
-{ latin: ["vultus", "vultus"], eng: ["countenance, face"], fig: "noun", gender: "M", genitive: "vultus", declension: "4" },
+{ latin: ["vultus", "vultus"], eng: ["countenance, face"], fig: "noun", gender: "M", genitive: "vultus", declension: "4" }
+
 ];
-   private static String parseLine(String line) 
-   {
-      // split main Latin/English parts
-      String[] parts = line.split("--");
-      if (parts.length < 2) 
-         return "{},";  // add comma here
-   
-      // latin forms
-      String latinPart = parts[0].trim();
-      String[] latinForms = latinPart.split(",|;"); // split by comma or semicolon
-      latinForms = trimAll(latinForms);
-   
-      // english + figure of speech
-      String rest = parts[1].trim();
-   
-      // check for (verb), (noun), etc.
-      String fig = "";
-      String conjugation = null;
-      String gender = null;
-      String genitive = null;
-      String declension = null;
-   
-      int figStart = rest.indexOf("(");
-      int figEnd = rest.indexOf(")");
-      if (figStart != -1 && figEnd != -1) 
-      {
-         fig = rest.substring(figStart + 1, figEnd).trim();
-         rest = rest.substring(0, figStart).trim();
-      }
-   
-      //  verbs
-      if (fig.startsWith("verb")) 
-      {
-         if (fig.contains("1")) conjugation = "1";
-         else if (fig.contains("2")) conjugation = "2";
-         else if (fig.contains("3")) conjugation = "3";
-         else if (fig.contains("4")) conjugation = "4";
-         else conjugation = "irregular";
-         fig = "verb";
-      }
-   
-      //  nouns
-      if (fig.startsWith("noun")) 
-      {
-         fig = "noun";
-      
-         // gender
-         String last = latinForms[latinForms.length - 1].toLowerCase();
-         if (last.equals("m.")) gender = "M";
-         else if (last.equals("f.")) gender = "F";
-         else if (last.equals("n.")) gender = "N";
-      
-         if (gender != null) 
-         {
-            latinForms = Arrays.copyOf(latinForms, latinForms.length - 1);
-         }
-      
-         if (latinForms.length > 1) 
-         {
-            genitive = latinForms[1];
-            declension = guessDeclension(genitive);
-         }
-      }
-   
-      String engPart = rest.split(":")[0].trim();
-      String[] engForms = trimAll(engPart.split(";"));
-   
-      // build output
-      StringBuilder sb = new StringBuilder();
-      sb.append("{ latin: ").append(formatArray(latinForms));
-      sb.append(", eng: ").append(formatArray(engForms));
-      sb.append(", fig: \"").append(fig).append("\"");
-      if (conjugation != null) 
-      {
-         sb.append(", conjugation: \"").append(conjugation).append("\"");
-      }
-      if (gender != null) 
-      {
-         sb.append(", gender: \"").append(gender).append("\"");
-      }
-      if (genitive != null) 
-      {
-         sb.append(", genitive: \"").append(genitive).append("\"");
-      }
-      if (declension != null) 
-      {
-         sb.append(", declension: \"").append(declension).append("\"");
-      }
-      sb.append(" },");   // 👈 add comma here
-   
-      return sb.toString();
-   }
 
-  ];
+// Quiz state
+let shuffledList = [];
+let currentIndex = 0;
+let score = 0;
+let questionLimit = null;
+let mode = "latToEng";
+let ppMode = false;
+let genMode = false;
+let genderMode = false;
+let decMode = false;
+let conjMode = false;
 
-  // Quiz state variables
-  let shuffledList = [];
-  let currentIndex = 0;
-  let score = 0;
-  let questionLimit = null;
-  let mode = "latToEng";
-  let ppMode = false;
-  let genMode = false;
-  let genderMode = false;
-  let decMode = false;
-  let conjMode = false;
+// Elements
+const definitionEl = document.getElementById("definition");
+const answerInputEl = document.getElementById("answerInput");
+const genderInputEl = document.getElementById("genderInput");
+const declensionInputEl = document.getElementById("declensionInput");
+const conjugationInputEl = document.getElementById("conjugationInput");
+const feedbackEl = document.getElementById("feedback");
+const scoreEl = document.getElementById("score");
 
-  // Elements
-  const definitionEl = document.getElementById("definition");
-  const answerInputEl = document.getElementById("answerInput");
-  const genderInputEl = document.getElementById("genderInput");
-  const declensionInputEl = document.getElementById("declensionInput");
-  const conjugationInputEl = document.getElementById("conjugationInput");
-  const feedbackEl = document.getElementById("feedback");
-  const scoreEl = document.getElementById("score");
-  const modeLabelEl = document.getElementById("modeLabel");
-  const questionCountModalEl = document.getElementById("questionCountModal");
-  const optionsModalEl = document.getElementById("optionsModal");
-  const questionCountInputEl = document.getElementById("questionCountInput");
+// Normalize helper
+function normalize(str) {
+  return str.toLowerCase().trim().replace(/[^\w\s]/g, '').replace(/\s+/g, ' ');
+}
 
-  // Normalization helper
-  function normalize(str) {
-    return str.toLowerCase().trim().replace(/[^\w\s]/g, '').replace(/\s+/g, ' ');
+// Shuffle array
+function shuffle(arr) {
+  let a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
   }
+  return a;
+}
 
-  // Init
-  function init() {
-    bindEvents();
-    startOver();
+// Start over
+function startOver() {
+  shuffledList = shuffle(vocabList);
+  currentIndex = 0;
+  score = 0;
+  updateScore();
+  showQuestion();
+}
+
+// Show question
+function showQuestion() {
+  feedbackEl.textContent = "";
+  answerInputEl.value = "";
+  genderInputEl.value = "";
+  declensionInputEl.value = "";
+  conjugationInputEl.value = "";
+
+  const vocab = shuffledList[currentIndex];
+
+  if (mode === "latToEng") {
+    definitionEl.textContent = vocab.latin.join(", ");
+  } else {
+    definitionEl.textContent = vocab.eng.join(", ");
   }
+}
 
-  // Event listeners
-  function bindEvents() {
-    document.getElementById("submitBtn").addEventListener("click", submitAnswer);
-    document.getElementById("nextBtn").addEventListener("click", nextQuestion);
-    document.getElementById("toggleModeBtn").addEventListener("click", toggleMode);
-    document.getElementById("optionsBtn").addEventListener("click", openOptions);
-    document.getElementById("restartBtn").addEventListener("click", startOver);
-    document.getElementById("startQuizBtn").addEventListener("click", applyQuestionCount);
-    document.getElementById("applyOptionsBtn").addEventListener("click", applyOptions);
-    document.getElementById("closeOptionsBtn").addEventListener("click", closeOptions);
-    document.addEventListener("keydown", handleKeydown);
-  }
+// Submit answer
+function submitAnswer() {
+  const vocab = shuffledList[currentIndex];
+  const userAns = normalize(answerInputEl.value);
 
-  // keyboard events
-  function handleKeydown(event) {
-    const activeElement = document.activeElement;
-    if (activeElement.tagName === "INPUT" && event.key !== "Enter") return;
-    if (event.key === "Enter") {
-      event.preventDefault();
-      submitAnswer();
-    } else if (event.key === " ") {
-      event.preventDefault();
-      nextQuestion();
+  let correct = false;
+
+  if (mode === "latToEng") {
+    if (vocab.eng.some(e => normalize(e) === userAns)) {
+      correct = true;
+    }
+  } else {
+    if (vocab.latin.some(l => normalize(l) === userAns)) {
+      correct = true;
     }
   }
 
-  // Shuffle
-  function shuffle(array) {
-    const a = array.slice();
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
+  if (correct) {
+    feedbackEl.textContent = "✅ Correct!";
+    score++;
+  } else {
+    feedbackEl.textContent = "❌ Wrong. Correct: " + 
+      (mode === "latToEng" ? vocab.eng.join(", ") : vocab.latin.join(", "));
   }
 
-  // Show question
-  function showQuestion() {
-    clearInputs();
-    if (currentIndex >= shuffledList.length) {
-      definitionEl.textContent = "Finished!";
-      feedbackEl.textContent = `Final Score: ${score}/${shuffledList.length}`;
-      return;
-    }
-    const vocab = shuffledList[currentIndex];
-    const displayText = mode === "latToEng" ? vocab.latin[0] : vocab.eng[0];
-    definitionEl.textContent = displayText;
-    modeLabelEl.textContent = mode === "latToEng" ? "Latin → English" : "English → Latin";
-    scoreEl.textContent = `Score: ${score}/${shuffledList.length}`;
-    feedbackEl.textContent = "";
-  }
+  updateScore();
+}
 
-  // clear inputs
-  function clearInputs() {
-    answerInputEl.value = "";
-    genderInputEl.value = "";
-    declensionInputEl.value = "";
-    conjugationInputEl.value = "";
-  }
-
-  // submit answer
-  function submitAnswer() {
-    const vocab = shuffledList[currentIndex];
-    if (!vocab) return;
-
-    let isCorrect = false;
-    let feedbackText = "";
-
-    // Normalize user answers
-    const answer = normalize(answerInputEl.value);
-    const genderInput = normalize(genderInputEl.value);
-    const declensionInput = normalize(declensionInputEl.value);
-    const conjugationInput = normalize(conjugationInputEl.value);
-
-    // Base check: latin ↔ english
-    let correctAnswers = mode === "latToEng" ? vocab.eng : vocab.latin;
-    if (!Array.isArray(correctAnswers)) correctAnswers = [correctAnswers];
-    isCorrect = correctAnswers.some(ans => normalize(ans) === answer);
-
-    // Genitive mode
-    if (isCorrect && genMode && vocab.genitive) {
-      isCorrect = answer === normalize(vocab.genitive);
-    }
-
-    // Gender mode
-    if (isCorrect && genderMode && vocab.gender) {
-      isCorrect = genderInput === normalize(vocab.gender);
-    }
-
-    // Declension mode
-    if (isCorrect && decMode && vocab.declension) {
-      isCorrect = declensionInput === normalize(vocab.declension);
-    }
-
-    // Conjugation mode
-    if (isCorrect && conjMode && vocab.conjugation) {
-      isCorrect = conjugationInput === normalize(vocab.conjugation);
-    }
-
-    // Principal parts mode
-    if (ppMode && vocab.pp) {
-      const userParts = answerInputEl.value.split(",").map(p => normalize(p));
-      const correctParts = vocab.pp.map(p => normalize(p));
-      isCorrect = userParts.length === correctParts.length &&
-                  userParts.every((part, i) => part === correctParts[i]);
-    }
-
-    // Feedback
-    if (isCorrect) {
-      feedbackEl.textContent = "Correct!";
-      feedbackEl.className = "feedback correct";
-      score++;
-    } 
-    else 
-    {
-      feedbackText = `Incorrect. Acceptable: ${correctAnswers.join(", ")}`;
-      if (genMode && vocab.genitive) feedbackText += ` | Genitive: ${vocab.genitive}`;
-      if (genderMode && vocab.gender) feedbackText += ` | Gender: ${vocab.gender}`;
-      if (decMode && vocab.declension) feedbackText += ` | Declension: ${vocab.declension}`;
-      if (conjMode && vocab.conjugation) feedbackText += ` | Conjugation: ${vocab.conjugation}`;
-      if (ppMode && vocab.pp) feedbackText += ` | Principal Parts: ${vocab.pp.join(", ")}`;
-      feedbackEl.textContent = feedbackText;
-      feedbackEl.className = "feedback incorrect";
-    }
-
-    currentIndex++;
-    scoreEl.textContent = `Score: ${score}/${shuffledList.length}`;
-  }
-
-  // next
-  function nextQuestion() 
-  {
-      
+// Next question
+function nextQuestion() {
+  currentIndex++;
+  if (currentIndex >= shuffledList.length) {
+    feedbackEl.textContent = "Quiz finished!";
+  } else {
     showQuestion();
   }
+}
 
-  // toggle mode
-  function toggleMode() 
-  {
-    mode = mode === "latToEng" ? "engToLat" : "latToEng";
-    showQuestion();
-  }
+// Update score
+function updateScore() {
+  scoreEl.textContent = `Score: ${score}/${currentIndex}`;
+}
 
-  // Start over
-  function startOver() 
-  {
-    shuffledList = shuffle(vocabList);
-    currentIndex = 0;
-    score = 0;
-    questionCountModalEl.style.display = "block";
-  }
+// Events
+document.getElementById("submitBtn").addEventListener("click", submitAnswer);
+document.getElementById("nextBtn").addEventListener("click", nextQuestion);
 
-  // apply question count
-  function applyQuestionCount() 
-  {
-    const count = parseInt(questionCountInputEl.value);
-    if (isNaN(count) || count <= 0) 
-    {
-      alert("Please enter a valid number.");
-      return;
-    }
-    questionLimit = count;
-    shuffledList = shuffle(vocabList).slice(0, questionLimit);
-    currentIndex = 0;
-    score = 0;
-    questionCountModalEl.style.display = "none";
-    showQuestion();
-  }
-
-  // options modal
-  function openOptions() 
-  {
-    document.getElementById("ppMode").checked = ppMode;
-    document.getElementById("genMode").checked = genMode;
-    document.getElementById("genderMode").checked = genderMode;
-    document.getElementById("decMode").checked = decMode;
-    document.getElementById("conjMode").checked = conjMode;
-    optionsModalEl.style.display = "block";
-  }
-  function closeOptions() 
-  {
-    optionsModalEl.style.display = "none";
-  }
-  function applyOptions() 
-  {
-    ppMode = document.getElementById("ppMode").checked;
-    genMode = document.getElementById("genMode").checked;
-    genderMode = document.getElementById("genderMode").checked;
-    decMode = document.getElementById("decMode").checked;
-    conjMode = document.getElementById("conjMode").checked;
-
-    // toggle input visibility
-    genderInputEl.style.display = genderMode ? "block" : "none";
-    declensionInputEl.style.display = decMode ? "block" : "none";
-    conjugationInputEl.style.display = conjMode ? "block" : "none";
-
-    closeOptions();
-  }
-
-  window.addEventListener("DOMContentLoaded", init);
+// Init
+startOver();

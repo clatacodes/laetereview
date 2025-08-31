@@ -1,32 +1,11 @@
 // vocabulary list
 // ō ū ā ē c
 // { latin: [""], eng: [""], fig: "", conj:""},
-
 <script>
-    // Vocabulary list
-    let vocabList = [
-      { latin: ["a", "ab"], eng: ["from", "by"], fig: "preposition" },
-      { latin: ["abeō", "abīre", "abīvī", "abitus"], eng: ["to go away"], fig: "verb", conjugation: "irregular" },
-      { latin: ["abhinc"], eng: ["ago", "previously"], fig: "adverb" },
-      { latin: ["abōminándus", "abōminánda", "abōminándum"], eng: ["detestable", "horrible"], fig: "adjective" },
-      { latin: ["abstineo", "abstinere", "abstinui", "abstentus"], eng: ["to refrain from"], fig: "verb", conjugation: "2"},
-      { latin: ["abstulo", "abstulere"], eng: ["to take away", "to withdraw"], fig: "verb", conjugation: "irregular" },
-      { latin: ["absum", "abesse", "afui", "afuturus"], eng: ["to be away", "to be absent", "to be distant"], fig: "verb", conjugation: "irregular" },
-      { latin: ["ac", "et"], eng: ["and","and also","and besides"], fig: "conjunction" },
-      { latin: ["idem ac"], eng: ["the same as","same","the very same"], fig: "phrase" },
-      { latin: ["accendo","accendere", "accendi", "accensus"], eng: ["to set on fire", "to kindle", "to light", "to illuminate", "to inflame", "to stir up", "to arouse", "to make bright"], fig: "verb", conjugation: "3" },
-      { latin: ["accidō", "accidere", "accidī"], eng: ["to happen"], fig: "verb", conjugation: "3" },
-      { latin: ["accipiō", "accipere", "accēpī", "acceptus"], eng: ["to accept", "to receive", "to welcome", "to grasp", "to undertake", "to admit", "to let in", "to hear", "to learn", "to obey"], fig: "verb", conjugation: "3" },
-      { latin: ["accumbo", "accumbere", "accubui"], eng: ["to recline"], fig: "verb", conjugation: "3" },
-      { latin: ["accurrō", "accurrere", "accurrī"], eng: ["to run", "to run toward", "to run up to", "to run up", "to hasten to","to rush up to", "to rush up", "to charge", "to rush to attack"], fig: "verb", conjugation: "3" },
-      { latin: ["accusāre"], eng: ["to accuse"], fig: "verb", conjugation: "1" },
-      { latin: ["ācer"], eng: ["sharp", "bitter", "keen", "vigorous"], fig: "adjective" },
-      { latin: ["ācriter"], eng: ["fiercely"], fig: "adverb" },
-      { latin: ["āctor"], eng: ["actor", "doer"], fig: "noun", gender: "M", genitive: "āctōris", declension: "3" },
-      { latin: ["abdūcō", "abducere", "abdūxī", "abductus"], eng: ["to lead away", "to abduct"], fig: "verb", conjugation: "3"},
-      { latin: ["abripiō", "abripere", "abripuī", "abreptus"], eng: ["to drag","to snatch","to carry away by force", "to wash away", "to blow away","to abduct", "to kidnap"], fig: "verb", conjugation: "3"},
-      { latin: ["absurdus"], eng: ["absurd", "nonsensical", "awkward"], fig: "adjective" },
-      { latin: ["accūsātiō"], eng: ["accusation", "indictment", "rebuke"], fig: "noun", gender: "F", genitive: "accūsātiōnis", declension:"3" },
+  // Vocabulary list
+  let vocabList = 
+    [
+    
 { latin: ["ab (a) + abl."], eng: ["away from, from", "by"], fig: "preposition" },
 { latin: ["abeo", "abire", "abii", "abitum"], eng: ["to go away, depart", "to die", "to disappear"], fig: "verb", conjugation: "irregular" },
 { latin: ["absens", "absentis"], eng: ["absent, away"], fig: "adjective" },
@@ -135,6 +114,7 @@
 { latin: ["ceno", "cenare", "cenavi", "cenatum"], eng: ["to dine"], fig: "verb", conjugation: "irregular" },
 { latin: ["centum"], eng: ["hundred"], fig: "adjective" },
 { latin: ["cerno", "cernere", "crevi", "cretum"], eng: ["to distinguish, discern, perceive"], fig: "verb", conjugation: "irregular" },
+{ latin: ["certus", "a", "um"], eng: ["definite, sure, certain"], fig: "adjective" },
 { latin: ["ceteri", "ceterae", "cetera"], eng: ["the remaining, the rest, the other, all the others"], fig: "adjective" },
 { latin: ["cingo", "cingere", "cinxi", "cinctum"], eng: ["to surround, gird", "equip"], fig: "verb", conjugation: "irregular" },
 { latin: ["civis", "civis", "m. & f."], eng: ["citizen"], fig: "noun", genitive: "civis", declension: "3" },
@@ -253,6 +233,7 @@
 { latin: ["egeo", "egere", "egui + abl."], eng: ["to need, lack, want"], fig: "verb", conjugation: "irregular" },
 { latin: ["ego", "mei"], eng: ["I"], fig: "pronoun" },
 { latin: ["egredior", "egredi", "egressus sum"], eng: ["to go out"], fig: "verb", conjugation: "irregular" },
+{ latin: ["elephantus", "elephanti"], eng: ["elephant"], fig: "noun", gender: "M", genitive: "elephanti", declension: "2" },
 { latin: ["emo", "emere", "emi", "emptum"], eng: ["to buy", "gain, obtain"], fig: "verb", conjugation: "irregular" },
 { latin: ["eo", "ire", "ivi (ii)", "itum"], eng: ["to go"], fig: "verb", conjugation: "irregular" },
 { latin: ["equus", "equi"], eng: ["horse"], fig: "noun", gender: "M", genitive: "equi", declension: "2" },
@@ -262,6 +243,7 @@
 { latin: ["et"], eng: ["and"], fig: "conjunction" },
 { latin: ["ex (e) +abl."], eng: ["out of, from", "on account of"], fig: "preposition" },
 { latin: ["excipio", "excipere", "excepi", "exceptum"], eng: ["to take out, except", "take, receive, capture"], fig: "verb", conjugation: "irregular" },
+{ latin: ["exemplar", "exemplaris n."], eng: ["model, pattern, example", "copy"], fig: "noun", genitive: "exemplaris n.", declension: "unknown" },
 { latin: ["exemplum", "exempli n/"], eng: ["sample, specimen, representative", "model"], fig: "noun", genitive: "exempli n/", declension: "unknown" },
 { latin: ["exeo", "exire", "exii", "exitum"], eng: ["to go out, exit"], fig: "verb", conjugation: "irregular" },
 { latin: ["exercitus", "exercitus"], eng: ["army"], fig: "noun", gender: "M", genitive: "exercitus", declension: "4" },
@@ -325,7 +307,7 @@
 { latin: ["gaudeo", "gaudere", "gavisus sum"], eng: ["to be glad, rejoice"], fig: "verb", conjugation: "irregular" },
 { latin: ["gaudium", "gaudii n."], eng: ["joy"], fig: "noun", genitive: "gaudii n.", declension: "unknown" },
 { latin: ["geminus", "a", "um"], eng: ["twin"], fig: "adjective" },
-{ latin: ["gens", "gentis"], eng: ["clan, race, nation, people"], fig: "noun", gender: "F", genitive: "gentis", declension: "3" }, 
+{ latin: ["gens", "gentis"], eng: ["clan, race, nation, people"], fig: "noun", gender: "F", genitive: "gentis", declension: "3" },
 { latin: ["genu", "genus"], eng: ["knee"], fig: "noun", gender: "N", genitive: "genus", declension: "4" },
 { latin: ["genus", "generis"], eng: ["origin, kind, sort, class"], fig: "noun", gender: "N", genitive: "generis", declension: "3" },
 { latin: ["gero", "gerere", "gessi", "gestum"], eng: ["to carry, manage, conduct", "accomplish"], fig: "verb", conjugation: "irregular" },
@@ -572,7 +554,7 @@
 { latin: ["ops", "opis"], eng: ["help, aid", "pl., resources, power, wealth"], fig: "noun", gender: "F", genitive: "opis", declension: "3" },
 { latin: ["optimus", "a", "um"], eng: ["best"], fig: "adjective" },
 { latin: ["opto", "optare", "optavi", "optatum"], eng: ["to choose, select", "wish, desire"], fig: "verb", conjugation: "irregular" },
-{ latin: ["opus", "operis"], eng: ["work, task", "deed, accomplishment"], fig: "noun", gender: "N", genitive: "operis", declension: ",3" },
+{ latin: ["opus", "operis"], eng: ["work, task", "deed, accomplishment"], fig: "noun", gender: "N", genitive: "operis", declension: "3" },
 { latin: ["oratio", "orationis"], eng: ["speech"], fig: "noun", gender: "F", genitive: "orationis", declension: "3" },
 { latin: ["orator", "oratoris"], eng: ["orator, speaker"], fig: "noun", gender: "M", genitive: "oratoris", declension: "3" },
 { latin: ["orbis", "orbis n."], eng: ["circle, territory", "region"], fig: "noun", genitive: "orbis n.", declension: "unknown" },
@@ -783,7 +765,7 @@
 { latin: ["species", "speciei f."], eng: ["appearance"], fig: "noun", genitive: "speciei f.", declension: "unknown" },
 { latin: ["specto", "spectare", "spectavi", "spectatum"], eng: ["to look at, see"], fig: "verb", conjugation: "irregular" },
 { latin: ["speculum", "speculi"], eng: ["mirror"], fig: "noun", gender: "N", genitive: "speculi", declension: "2" },
-{ latin: ["spero", "sperare", "speravi", "speratum"], eng: ["to hope for, hope"], fig: "verb", conjugation: "irregular"},
+{ latin: ["spero", "sperare", "speravi", "speratum"], eng: ["to hope for, hope"], fig: "verb", conjugation: "irregular" },
 { latin: ["spiritus", "spiritus"], eng: ["breath, spirit, soul"], fig: "noun", gender: "M", genitive: "spiritus", declension: "4" },
 { latin: ["statua", "statuae f."], eng: ["statue"], fig: "noun", genitive: "statuae f.", declension: "unknown" },
 { latin: ["stella", "stellae"], eng: ["star, planet"], fig: "noun", gender: "F", genitive: "stellae", declension: "1" },
@@ -821,302 +803,419 @@
 { latin: ["te"], eng: ["you"], fig: "pronoun" },
 { latin: ["tego", "tegere", "texi", "tectum"], eng: ["to cover, defend", "hide"], fig: "verb", conjugation: "irregular" },
 { latin: ["tempestas", "tempestatis"], eng: ["period of time, season", "weather", "storm"], fig: "noun", gender: "F", genitive: "tempestatis", declension: "3" },
-,{ latin: ["tempto", "temptare", "temptavi", "temptatum"], eng: ["to test, try", "urge"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["tempus", "temporis"], eng: ["time"], fig: "noun", gender: "N", genitive: "temporis", declension: "3" }
-,{ latin: ["teneo", "tenere", "tenui", "tentum"], eng: ["to hold, keep, possess"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["tergum", "tergi n."], eng: ["back"], fig: "noun", genitive: "tergi n.", declension: "unknown" }
-,{ latin: ["terra", "terrae"], eng: ["earth, land"], fig: "noun", gender: "F", genitive: "terrae", declension: "1" }
-,{ latin: ["terreo", "terrere", "terrui", "territum"], eng: ["to terrify"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["timeo", "timere", "timui"], eng: ["to fear"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["timor", "timoris"], eng: ["fear"], fig: "noun", gender: "M", genitive: "timoris", declension: "3" }
-,{ latin: ["tolero", "tolerare", "toleravi", "toleratum"], eng: ["to bear, endure"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["tollo", "tollere", "sustuli", "sublatum"], eng: ["to raise, lift up", "take away, remove, destroy"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["tot"], eng: ["so many"], fig: "adjective" }
-,{ latin: ["totus", "a", "um"], eng: ["whole, entire"], fig: "adjective" }
-,{ latin: ["trado", "tradere", "tradidi", "traditum"], eng: ["to give over, surrender", "hand down, transmit,teach"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["traho", "trahere", "traxi", "tractum"], eng: ["to draw, drag, derive"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["trans + acc."], eng: ["across"], fig: "preposition" }
-,{ latin: ["transeo", "transire", "transii", "transitum"], eng: ["to go across, cross", "pass over, ignore"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["transitus", "transitus"], eng: ["passing over, transit, transition"], fig: "noun", gender: "M", genitive: "transitus", declension: "4" }
-,{ latin: ["tres", "tria"], eng: ["three"], fig: "adjective" }
-,{ latin: ["tristis", "triste"], eng: ["sad, sorrowful", "joyless, grim, severe"], fig: "adjective" }
-,{ latin: ["Troia", "Troiae"], eng: ["Troy"], fig: "noun", gender: "F", genitive: "Troiae", declension: "1" }
-,{ latin: ["tu", "tui"], eng: ["you"], fig: "pronoun" }
-,{ latin: ["turba", "turbae"], eng: ["mob, crowd, disturbance"], fig: "noun", gender: "F", genitive: "turbae", declension: "1" }
-,{ latin: ["turpis", "turpe"], eng: ["ugly, shameful, base, disgraceful"], fig: "adjective" }
-,{ latin: ["tuus", "a", "um"], eng: ["your"], fig: "adjective" }
-,{ latin: ["tyrannus", "tyranni"], eng: ["tyrant"], fig: "noun", gender: "M", genitive: "tyranni", declension: "2" }
-,{ latin: ["ubi"], eng: ["when, where, where?"], fig: "conjunction" }
-,{ latin: ["ullus", "a", "um"], eng: ["any"], fig: "adjective" }
-,{ latin: ["ultimus", "a", "um"], eng: ["farthest, extreme", "last"], fig: "adjective" }
-,{ latin: ["ultra"], eng: ["on the other side, beyond"], fig: "adverb" }
-,{ latin: ["ultra"], eng: ["on the other side, beyond"], fig: "preposition" }
-,{ latin: ["unda", "undae f."], eng: ["wave"], fig: "noun", genitive: "undae f.", declension: "unknown" }
-,{ latin: ["unus", "a", "um"], eng: ["one, single, alone"], fig: "adjective" }
-,{ latin: ["urbanus", "a", "um"], eng: ["of the city, urban, urbane"], fig: "adjective" }
-,{ latin: ["urbs", "urbis"], eng: ["city", "City of Rome"], fig: "noun", gender: "F", genitive: "urbis", declension: "3" }
-,{ latin: ["urna", "urnae f."], eng: ["urn"], fig: "noun", genitive: "urnae f.", declension: "unknown" }
-,{ latin: ["usus", "usus m."], eng: ["use, advantage, enjojment"], fig: "noun", genitive: "usus m.", declension: "unknown" }
-,{ latin: ["uter", "utra", "utrum"], eng: ["either, which"], fig: "of two" }
-,{ latin: ["utilis", "utile"], eng: ["useful, advantageous"], fig: "adjective" }
-,{ latin: ["utor", "uti", "usus sum + abl."], eng: ["to use", "enjoy, experience"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["uxor", "uxoris"], eng: ["wife"], fig: "noun", gender: "F", genitive: "uxoris", declension: "3" }
-,{ latin: ["valeo", "valere", "valui", "valiturum"], eng: ["to be strong", "have power", "be well"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["validus", "a", "um"], eng: ["strong, healthy"], fig: "adjective" }
-,{ latin: ["vendo", "vendere", "vendidi", "venditum"], eng: ["to sell"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["venia", "veniae f."], eng: ["favor, kindness"], fig: "noun", genitive: "veniae f.", declension: "unknown" }
-,{ latin: ["venio", "venire", "veni", "ventum"], eng: ["to come"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["ventus", "venti"], eng: ["wind"], fig: "noun", gender: "M", genitive: "venti", declension: "2" }
-,{ latin: ["verbum", "verbi"], eng: ["word"], fig: "noun", gender: "N", genitive: "verbi", declension: "2" }
-,{ latin: ["vereor", "vereri", "veritus sum"], eng: ["to show reverence for, respect"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["veritas", "veritatis"], eng: ["truth"], fig: "noun", gender: "F", genitive: "veritatis", declension: "3" }
-,{ latin: ["vero"], eng: ["but", "in truth, indeed, to be sure, however"], fig: "adverb" }
-,{ latin: ["versus", "versus"], eng: ["verse"], fig: "noun", gender: "M", genitive: "versus", declension: "4" }
-,{ latin: ["verto", "vertere", "verti", "versum"], eng: ["to turn, change"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["verus", "a", "um"], eng: ["true, real", "proper"], fig: "adjective" }
-,{ latin: ["vesper", "vesperis"], eng: ["evening", "evening star"], fig: "noun", gender: "M", genitive: "vesperis", declension: "3" }
-,{ latin: ["vetus", "veteris"], eng: ["old"], fig: "adjective" }
-,{ latin: ["via", "viae"], eng: ["way, road, street"], fig: "noun", gender: "F", genitive: "viae", declension: "1" }
-,{ latin: ["vicina", "vicinae"], eng: ["neighbor"], fig: "noun", gender: "F", genitive: "vicinae", declension: "1" }
-,{ latin: ["vicinus", "vicini"], eng: ["neighbor"], fig: "noun", gender: "M", genitive: "vicini", declension: "2" }
-,{ latin: ["victoria", "victoriae"], eng: ["victory"], fig: "noun", gender: "F", genitive: "victoriae", declension: "1" }
-,{ latin: ["video", "videre", "vidi", "visum"], eng: ["to see"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["videor", "videri", "visus sum"], eng: ["to be seen, seem"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["vigor", "vigoris m."], eng: ["liveliness, vigor, activity"], fig: "noun", genitive: "vigoris m.", declension: "unknown" }
-,{ latin: ["vinco", "vincere", "vici", "victum"], eng: ["to conquer"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["vinum", "vini"], eng: ["wine"], fig: "noun", gender: "N", genitive: "vini", declension: "2" }
-,{ latin: ["violo", "violare", "violavi", "violatum"], eng: ["to violate, dishonor", "outrage"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["vir", "viri"], eng: ["man"], fig: "noun", gender: "M", genitive: "viri", declension: "2" }
-,{ latin: ["virgo", "virginis"], eng: ["maiden, virgin"], fig: "noun", gender: "F", genitive: "virginis", declension: "3" }
-,{ latin: ["virtus", "virtutis"], eng: ["manliness, courage, excellence, virtue"], fig: "noun", gender: "F", genitive: "virtutis", declension: "3" }
-,{ latin: ["vis", "vis"], eng: ["force"], fig: "noun", gender: "F", genitive: "vis", declension: "3" }
-,{ latin: ["vita", "vitae"], eng: ["life"], fig: "noun", gender: "F", genitive: "vitae", declension: "1" }
-,{ latin: ["vitium", "vitii"], eng: ["fault, crime", "vice"], fig: "noun", gender: "N", genitive: "vitii", declension: "2" }
-,{ latin: ["vito", "vitare", "vitavi", "vitatum"], eng: ["to avoid, shun"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["vivo", "vivere", "vixi", "victum"], eng: ["to live"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["vivus", "a", "um"], eng: ["alive, living"], fig: "adjective" }
-,{ latin: ["voco", "vocare", "vocavi", "vocatum"], eng: ["to call"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["volo", "velle", "volui"], eng: ["to wish, want, be willing, will"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["voluptas", "voluptatis"], eng: ["pleasure"], fig: "noun", gender: "F", genitive: "voluptatis", declension: "3" }
-,{ latin: ["vox", "vocis"], eng: ["voice, word"], fig: "noun", gender: "F", genitive: "vocis", declension: "3" }
-,{ latin: ["vulgus", "vulgi"], eng: ["the common people, mob, rabble"], fig: "noun", gender: "M", genitive: "vulgi", declension: "2" }
-,{ latin: ["vulnero", "vulnerare", "vulneravi", "vulneratum"], eng: ["to wound, harm, distress"], fig: "verb", conjugation: "irregular" }
-,{ latin: ["vulnus", "vulneris"], eng: ["wound"], fig: "noun", gender: "N", genitive: "vulneris", declension: "3" }
-,{ latin: ["vultus", "vultus"], eng: ["countenance, face"], fig: "noun", gender: "M", genitive: "vultus", declension: "4" }
+{ latin: ["tempto", "temptare", "temptavi", "temptatum"], eng: ["to test, try", "urge"], fig: "verb", conjugation: "irregular" },
+{ latin: ["tempus", "temporis"], eng: ["time"], fig: "noun", gender: "N", genitive: "temporis", declension: "3" },
+{ latin: ["teneo", "tenere", "tenui", "tentum"], eng: ["to hold, keep, possess"], fig: "verb", conjugation: "irregular" },
+{ latin: ["tergum", "tergi n."], eng: ["back"], fig: "noun", genitive: "tergi n.", declension: "unknown" },
+{ latin: ["terra", "terrae"], eng: ["earth, land"], fig: "noun", gender: "F", genitive: "terrae", declension: "1" },
+{ latin: ["terreo", "terrere", "terrui", "territum"], eng: ["to terrify"], fig: "verb", conjugation: "irregular" },
+{ latin: ["timeo", "timere", "timui"], eng: ["to fear"], fig: "verb", conjugation: "irregular" },
+{ latin: ["timor", "timoris"], eng: ["fear"], fig: "noun", gender: "M", genitive: "timoris", declension: "3" },
+{ latin: ["tolero", "tolerare", "toleravi", "toleratum"], eng: ["to bear, endure"], fig: "verb", conjugation: "irregular" },
+{ latin: ["tollo", "tollere", "sustuli", "sublatum"], eng: ["to raise, lift up", "take away, remove, destroy"], fig: "verb", conjugation: "irregular" },
+{ latin: ["tot"], eng: ["so many"], fig: "adjective" },
+{ latin: ["totus", "a", "um"], eng: ["whole, entire"], fig: "adjective" },
+{ latin: ["trado", "tradere", "tradidi", "traditum"], eng: ["to give over, surrender", "hand down, transmit,teach"], fig: "verb", conjugation: "irregular" },
+{ latin: ["traho", "trahere", "traxi", "tractum"], eng: ["to draw, drag, derive"], fig: "verb", conjugation: "irregular" },
+{ latin: ["trans + acc."], eng: ["across"], fig: "preposition" },
+{ latin: ["transeo", "transire", "transii", "transitum"], eng: ["to go across, cross", "pass over, ignore"], fig: "verb", conjugation: "irregular" },
+{ latin: ["transitus", "transitus"], eng: ["passing over, transit, transition"], fig: "noun", gender: "M", genitive: "transitus", declension: "4" },
+{ latin: ["tres", "tria"], eng: ["three"], fig: "adjective" },
+{ latin: ["tristis", "triste"], eng: ["sad, sorrowful", "joyless, grim, severe"], fig: "adjective" },
+{ latin: ["Troia", "Troiae"], eng: ["Troy"], fig: "noun", gender: "F", genitive: "Troiae", declension: "1" },
+{ latin: ["tu", "tui"], eng: ["you"], fig: "pronoun" },
+{ latin: ["turba", "turbae"], eng: ["mob, crowd, disturbance"], fig: "noun", gender: "F", genitive: "turbae", declension: "1" },
+{ latin: ["turpis", "turpe"], eng: ["ugly, shameful, base, disgraceful"], fig: "adjective" },
+{ latin: ["tuus", "a", "um"], eng: ["your"], fig: "adjective" },
+{ latin: ["tyrannus", "tyranni"], eng: ["tyrant"], fig: "noun", gender: "M", genitive: "tyranni", declension: "2" },
+{ latin: ["ubi"], eng: ["when, where, where?"], fig: "conjunction" },
+{ latin: ["ullus", "a", "um"], eng: ["any"], fig: "adjective" },
+{ latin: ["ultimus", "a", "um"], eng: ["farthest, extreme", "last"], fig: "adjective" },
+{ latin: ["ultra"], eng: ["on the other side, beyond"], fig: "adverb" },
+{ latin: ["ultra + acc."], eng: ["on the other side, beyond"], fig: "preposition" },
+{ latin: ["unda", "undae f."], eng: ["wave"], fig: "noun", genitive: "undae f.", declension: "unknown" },
+{ latin: ["unus", "a", "um"], eng: ["one, single, alone"], fig: "adjective" },
+{ latin: ["urbanus", "a", "um"], eng: ["of the city, urban, urbane"], fig: "adjective" },
+{ latin: ["urbs", "urbis"], eng: ["city", "City of Rome"], fig: "noun", gender: "F", genitive: "urbis", declension: "3" },
+{ latin: ["urna", "urnae f."], eng: ["urn"], fig: "noun", genitive: "urnae f.", declension: "unknown" },
+{ latin: ["usus", "usus m."], eng: ["use, advantage, enjojment"], fig: "noun", genitive: "usus m.", declension: "unknown" },
+{ latin: ["uter", "utra", "utrum"], eng: ["either, which"], fig: "of two" },
+{ latin: ["utilis", "utile"], eng: ["useful, advantageous"], fig: "adjective" },
+{ latin: ["utor", "uti", "usus sum + abl."], eng: ["to use", "enjoy, experience"], fig: "verb", conjugation: "irregular" },
+{ latin: ["uxor", "uxoris"], eng: ["wife"], fig: "noun", gender: "F", genitive: "uxoris", declension: "3" },
+{ latin: ["valeo", "valere", "valui", "valiturum"], eng: ["to be strong", "have power", "be well"], fig: "verb", conjugation: "irregular" },
+{ latin: ["validus", "a", "um"], eng: ["strong, healthy"], fig: "adjective" },
+{ latin: ["vendo", "vendere", "vendidi", "venditum"], eng: ["to sell"], fig: "verb", conjugation: "irregular" },
+{ latin: ["venia", "veniae f."], eng: ["favor, kindness"], fig: "noun", genitive: "veniae f.", declension: "unknown" },
+{ latin: ["venio", "venire", "veni", "ventum"], eng: ["to come"], fig: "verb", conjugation: "irregular" },
+{ latin: ["ventus", "venti"], eng: ["wind"], fig: "noun", gender: "M", genitive: "venti", declension: "2" },
+{ latin: ["verbum", "verbi"], eng: ["word"], fig: "noun", gender: "N", genitive: "verbi", declension: "2" },
+{ latin: ["vereor", "vereri", "veritus sum"], eng: ["to show reverence for, respect"], fig: "verb", conjugation: "irregular" },
+{ latin: ["veritas", "veritatis"], eng: ["truth"], fig: "noun", gender: "F", genitive: "veritatis", declension: "3" },
+{ latin: ["vero"], eng: ["but", "in truth, indeed, to be sure, however"], fig: "adverb" },
+{ latin: ["versus", "versus"], eng: ["verse"], fig: "noun", gender: "M", genitive: "versus", declension: "4" },
+{ latin: ["verto", "vertere", "verti", "versum"], eng: ["to turn, change"], fig: "verb", conjugation: "irregular" },
+{ latin: ["verus", "a", "um"], eng: ["true, real", "proper"], fig: "adjective" },
+{ latin: ["vesper", "vesperis"], eng: ["evening", "evening star"], fig: "noun", gender: "M", genitive: "vesperis", declension: "3" },
+{ latin: ["vetus", "veteris"], eng: ["old"], fig: "adjective" },
+{ latin: ["via", "viae"], eng: ["way, road, street"], fig: "noun", gender: "F", genitive: "viae", declension: "1" },
+{ latin: ["vicina", "vicinae"], eng: ["neighbor"], fig: "noun", gender: "F", genitive: "vicinae", declension: "1" },
+{ latin: ["vicinus", "vicini"], eng: ["neighbor"], fig: "noun", gender: "M", genitive: "vicini", declension: "2" },
+{ latin: ["victoria", "victoriae"], eng: ["victory"], fig: "noun", gender: "F", genitive: "victoriae", declension: "1" },
+{ latin: ["video", "videre", "vidi", "visum"], eng: ["to see"], fig: "verb", conjugation: "irregular" },
+{ latin: ["videor", "videri", "visus sum"], eng: ["to be seen, seem"], fig: "verb", conjugation: "irregular" },
+{ latin: ["vigor", "vigoris m."], eng: ["liveliness, vigor, activity"], fig: "noun", genitive: "vigoris m.", declension: "unknown" },
+{ latin: ["vinco", "vincere", "vici", "victum"], eng: ["to conquer"], fig: "verb", conjugation: "irregular" },
+{ latin: ["vinum", "vini"], eng: ["wine"], fig: "noun", gender: "N", genitive: "vini", declension: "2" },
+{ latin: ["violo", "violare", "violavi", "violatum"], eng: ["to violate, dishonor", "outrage"], fig: "verb", conjugation: "irregular" },
+{ latin: ["vir", "viri"], eng: ["man"], fig: "noun", gender: "M", genitive: "viri", declension: "2" },
+{ latin: ["virgo", "virginis"], eng: ["maiden, virgin"], fig: "noun", gender: "F", genitive: "virginis", declension: "3" },
+{ latin: ["virtus", "virtutis"], eng: ["manliness, courage, excellence, virtue"], fig: "noun", gender: "F", genitive: "virtutis", declension: "3" },
+{ latin: ["vis", "vis"], eng: ["force"], fig: "noun", gender: "F", genitive: "vis", declension: "3" },
+{ latin: ["vita", "vitae"], eng: ["life"], fig: "noun", gender: "F", genitive: "vitae", declension: "1" },
+{ latin: ["vitium", "vitii"], eng: ["fault, crime", "vice"], fig: "noun", gender: "N", genitive: "vitii", declension: "2" },
+{ latin: ["vito", "vitare", "vitavi", "vitatum"], eng: ["to avoid, shun"], fig: "verb", conjugation: "irregular" },
+{ latin: ["vivo", "vivere", "vixi", "victum"], eng: ["to live"], fig: "verb", conjugation: "irregular" },
+{ latin: ["vivus", "a", "um"], eng: ["alive, living"], fig: "adjective" },
+{ latin: ["voco", "vocare", "vocavi", "vocatum"], eng: ["to call"], fig: "verb", conjugation: "irregular" },
+{ latin: ["volo", "velle", "volui"], eng: ["to wish, want, be willing, will"], fig: "verb", conjugation: "irregular" },
+{ latin: ["voluptas", "voluptatis"], eng: ["pleasure"], fig: "noun", gender: "F", genitive: "voluptatis", declension: "3" },
+{ latin: ["vox", "vocis"], eng: ["voice, word"], fig: "noun", gender: "F", genitive: "vocis", declension: "3" },
+{ latin: ["vulgus", "vulgi"], eng: ["the common people, mob, rabble"], fig: "noun", gender: "M", genitive: "vulgi", declension: "2" },
+{ latin: ["vulnero", "vulnerare", "vulneravi", "vulneratum"], eng: ["to wound, harm, distress"], fig: "verb", conjugation: "irregular" },
+{ latin: ["vulnus", "vulneris"], eng: ["wound"], fig: "noun", gender: "N", genitive: "vulneris", declension: "3" },
+{ latin: ["vultus", "vultus"], eng: ["countenance, face"], fig: "noun", gender: "M", genitive: "vultus", declension: "4" },
 
-
-];
-
-
-// Quiz state variables
-    let shuffledList = [];
-    let currentIndex = 0;
-    let score = 0;
-    let questionLimit = null;
-    let mode = "latToEng";
-    let ppMode = false;
-    let genMode = false;
-    let genderMode = false;
-    let decMode = false;
-    let conjMode = false;
-
-    // Elements
-    const definitionEl = document.getElementById("definition");
-    const answerInputEl = document.getElementById("answerInput");
-    const genderInputEl = document.getElementById("genderInput");
-    const declensionInputEl = document.getElementById("declensionInput");
-    const conjugationInputEl = document.getElementById("conjugationInput");
-    const feedbackEl = document.getElementById("feedback");
-    const scoreEl = document.getElementById("score");
-    const modeLabelEl = document.getElementById("modeLabel");
-    const questionCountModalEl = document.getElementById("questionCountModal");
-    const optionsModalEl = document.getElementById("optionsModal");
-    const questionCountInputEl = document.getElementById("questionCountInput");
-
-    // Init
-    function init() 
-    {
-      bindEvents();
-      startOver();
-    }
-
-    // Event listeners
-    function bindEvents()
+ ----jGRASP: Operation complete.
+   private static String parseLine(String line) 
+   {
+      // split main Latin/English parts
+      String[] parts = line.split("--");
+      if (parts.length < 2) 
+         return "{},";  // add comma here
+   
+      // latin forms
+      String latinPart = parts[0].trim();
+      String[] latinForms = latinPart.split(",|;"); // split by comma or semicolon
+      latinForms = trimAll(latinForms);
+   
+      // english + figure of speech
+      String rest = parts[1].trim();
+   
+      // check for (verb), (noun), etc.
+      String fig = "";
+      String conjugation = null;
+      String gender = null;
+      String genitive = null;
+      String declension = null;
+   
+      int figStart = rest.indexOf("(");
+      int figEnd = rest.indexOf(")");
+      if (figStart != -1 && figEnd != -1) 
       {
-      document.getElementById("submitBtn").addEventListener("click", submitAnswer);
-      document.getElementById("nextBtn").addEventListener("click", nextQuestion);
-      document.getElementById("toggleModeBtn").addEventListener("click", toggleMode);
-      document.getElementById("optionsBtn").addEventListener("click", openOptions);
-      document.getElementById("restartBtn").addEventListener("click", startOver);
-      document.getElementById("startQuizBtn").addEventListener("click", applyQuestionCount);
-      document.getElementById("applyOptionsBtn").addEventListener("click", applyOptions);
-      document.getElementById("closeOptionsBtn").addEventListener("click", closeOptions);
-      document.addEventListener("keydown", handleKeydown);
-    }
-
-    // keyboard events
-    function handleKeydown(event)
-      {
-      const activeElement = document.activeElement;
-      if (activeElement.tagName === "INPUT" && event.key !== "Enter") return;
-      if (event.key === "Enter") 
-      {
-        event.preventDefault();
-        submitAnswer();
-      } 
-      else if (event.key === " ") 
-      {
-        event.preventDefault();
-        nextQuestion();
+         fig = rest.substring(figStart + 1, figEnd).trim();
+         rest = rest.substring(0, figStart).trim();
       }
-    }
-
-    // Shuffle
-    function shuffle(array) 
-    {
-      const a = array.slice();
-      for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
+   
+      //  verbs
+      if (fig.startsWith("verb")) 
+      {
+         if (fig.contains("1")) conjugation = "1";
+         else if (fig.contains("2")) conjugation = "2";
+         else if (fig.contains("3")) conjugation = "3";
+         else if (fig.contains("4")) conjugation = "4";
+         else conjugation = "irregular";
+         fig = "verb";
       }
-      return a;
-    }
-
-    // Show question
-    function showQuestion() 
-    {
-      clearInputs();
-      if (currentIndex >= shuffledList.length) 
+   
+      //  nouns
+      if (fig.startsWith("noun")) 
       {
-        definitionEl.textContent = "Finished!";
-        feedbackEl.textContent = `Final Score: ${score}/${shuffledList.length}`;
-        return;
+         fig = "noun";
+      
+         // gender
+         String last = latinForms[latinForms.length - 1].toLowerCase();
+         if (last.equals("m.")) gender = "M";
+         else if (last.equals("f.")) gender = "F";
+         else if (last.equals("n.")) gender = "N";
+      
+         if (gender != null) 
+         {
+            latinForms = Arrays.copyOf(latinForms, latinForms.length - 1);
+         }
+      
+         if (latinForms.length > 1) 
+         {
+            genitive = latinForms[1];
+            declension = guessDeclension(genitive);
+         }
       }
-      const vocab = shuffledList[currentIndex];
-      const displayText = mode === "latToEng" ? vocab.latin[0] : vocab.eng[0];
-      definitionEl.textContent = displayText;
-      modeLabelEl.textContent = mode === "latToEng" ? "Latin → English" : "English → Latin";
-      scoreEl.textContent = `Score: ${score}/${shuffledList.length}`;
-      feedbackEl.textContent = "";
-    }
-
-    // clear inputs
-    function clearInputs() 
-    {
-      answerInputEl.value = "";
-      genderInputEl.value = "";
-      declensionInputEl.value = "";
-      conjugationInputEl.value = "";
-    }
-
-    // submit answer
-    function submitAnswer() 
-    {
-      const vocab = shuffledList[currentIndex];
-      if (!vocab) return;
-      const answer = answerInputEl.value.trim().toLowerCase();
-      const genderInput = genderInputEl.value.trim().toLowerCase();
-      const declensionInput = declensionInputEl.value.trim().toLowerCase();
-      const conjugationInput = conjugationInputEl.value.trim().toLowerCase();
-      let correctAnswers = mode === "latToEng" ? vocab.eng : vocab.latin;
-      if (!Array.isArray(correctAnswers)) correctAnswers = [correctAnswers];
-      const normalizedAnswer = answer.replace(/[^\w\s]/g, ' ');
-      let isCorrect = correctAnswers.some(ans =>
-        ans.toLowerCase().trim().replace(/[^\w\s]/g, ' ') === normalizedAnswer
-      );
-      if (isCorrect && genderMode && vocab.gender) 
+   
+      String engPart = rest.split(":")[0].trim();
+      String[] engForms = trimAll(engPart.split(";"));
+   
+      // build output
+      StringBuilder sb = new StringBuilder();
+      sb.append("{ latin: ").append(formatArray(latinForms));
+      sb.append(", eng: ").append(formatArray(engForms));
+      sb.append(", fig: \"").append(fig).append("\"");
+      if (conjugation != null) 
       {
-        isCorrect = genderInput === vocab.gender.toLowerCase();
+         sb.append(", conjugation: \"").append(conjugation).append("\"");
       }
-      if (isCorrect && decMode && vocab.declension)
+      if (gender != null) 
       {
-        isCorrect = declensionInput === vocab.declension.toLowerCase();
+         sb.append(", gender: \"").append(gender).append("\"");
       }
-      if (isCorrect && conjMode && vocab.conjugation) 
+      if (genitive != null) 
       {
-        isCorrect = conjugationInput === vocab.conjugation.toLowerCase();
+         sb.append(", genitive: \"").append(genitive).append("\"");
       }
-      if (isCorrect) 
+      if (declension != null) 
       {
-        feedbackEl.textContent = "Correct!";
-        feedbackEl.className = "feedback correct";
-        score++;
-      } 
-      else 
-      {
-        let feedbackText = `Incorrect. Acceptable answer(s): ${correctAnswers.join(", ")}`;
-        if (genderMode && vocab.gender) feedbackText += ` | Gender: ${vocab.gender}`;
-        if (decMode && vocab.declension) feedbackText += ` | Declension: ${vocab.declension}`;
-        if (conjMode && vocab.conjugation) feedbackText += ` | Conjugation: ${vocab.conjugation}`;
-        feedbackEl.textContent = feedbackText;
-        feedbackEl.className = "feedback incorrect";
+         sb.append(", declension: \"").append(declension).append("\"");
       }
-      currentIndex++;
-      scoreEl.textContent = `Score: ${score}/${shuffledList.length}`;
+      sb.append(" },");   // 👈 add comma here
+   
+      return sb.toString();
+   }
+
+  ];
+
+  // Quiz state variables
+  let shuffledList = [];
+  let currentIndex = 0;
+  let score = 0;
+  let questionLimit = null;
+  let mode = "latToEng";
+  let ppMode = false;
+  let genMode = false;
+  let genderMode = false;
+  let decMode = false;
+  let conjMode = false;
+
+  // Elements
+  const definitionEl = document.getElementById("definition");
+  const answerInputEl = document.getElementById("answerInput");
+  const genderInputEl = document.getElementById("genderInput");
+  const declensionInputEl = document.getElementById("declensionInput");
+  const conjugationInputEl = document.getElementById("conjugationInput");
+  const feedbackEl = document.getElementById("feedback");
+  const scoreEl = document.getElementById("score");
+  const modeLabelEl = document.getElementById("modeLabel");
+  const questionCountModalEl = document.getElementById("questionCountModal");
+  const optionsModalEl = document.getElementById("optionsModal");
+  const questionCountInputEl = document.getElementById("questionCountInput");
+
+  // Normalization helper
+  function normalize(str) {
+    return str.toLowerCase().trim().replace(/[^\w\s]/g, '').replace(/\s+/g, ' ');
+  }
+
+  // Init
+  function init() {
+    bindEvents();
+    startOver();
+  }
+
+  // Event listeners
+  function bindEvents() {
+    document.getElementById("submitBtn").addEventListener("click", submitAnswer);
+    document.getElementById("nextBtn").addEventListener("click", nextQuestion);
+    document.getElementById("toggleModeBtn").addEventListener("click", toggleMode);
+    document.getElementById("optionsBtn").addEventListener("click", openOptions);
+    document.getElementById("restartBtn").addEventListener("click", startOver);
+    document.getElementById("startQuizBtn").addEventListener("click", applyQuestionCount);
+    document.getElementById("applyOptionsBtn").addEventListener("click", applyOptions);
+    document.getElementById("closeOptionsBtn").addEventListener("click", closeOptions);
+    document.addEventListener("keydown", handleKeydown);
+  }
+
+  // keyboard events
+  function handleKeydown(event) {
+    const activeElement = document.activeElement;
+    if (activeElement.tagName === "INPUT" && event.key !== "Enter") return;
+    if (event.key === "Enter") {
+      event.preventDefault();
+      submitAnswer();
+    } else if (event.key === " ") {
+      event.preventDefault();
+      nextQuestion();
+    }
+  }
+
+  // Shuffle
+  function shuffle(array) {
+    const a = array.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  // Show question
+  function showQuestion() {
+    clearInputs();
+    if (currentIndex >= shuffledList.length) {
+      definitionEl.textContent = "Finished!";
+      feedbackEl.textContent = `Final Score: ${score}/${shuffledList.length}`;
+      return;
+    }
+    const vocab = shuffledList[currentIndex];
+    const displayText = mode === "latToEng" ? vocab.latin[0] : vocab.eng[0];
+    definitionEl.textContent = displayText;
+    modeLabelEl.textContent = mode === "latToEng" ? "Latin → English" : "English → Latin";
+    scoreEl.textContent = `Score: ${score}/${shuffledList.length}`;
+    feedbackEl.textContent = "";
+  }
+
+  // clear inputs
+  function clearInputs() {
+    answerInputEl.value = "";
+    genderInputEl.value = "";
+    declensionInputEl.value = "";
+    conjugationInputEl.value = "";
+  }
+
+  // submit answer
+  function submitAnswer() {
+    const vocab = shuffledList[currentIndex];
+    if (!vocab) return;
+
+    let isCorrect = false;
+    let feedbackText = "";
+
+    // Normalize user answers
+    const answer = normalize(answerInputEl.value);
+    const genderInput = normalize(genderInputEl.value);
+    const declensionInput = normalize(declensionInputEl.value);
+    const conjugationInput = normalize(conjugationInputEl.value);
+
+    // Base check: latin ↔ english
+    let correctAnswers = mode === "latToEng" ? vocab.eng : vocab.latin;
+    if (!Array.isArray(correctAnswers)) correctAnswers = [correctAnswers];
+    isCorrect = correctAnswers.some(ans => normalize(ans) === answer);
+
+    // Genitive mode
+    if (isCorrect && genMode && vocab.genitive) {
+      isCorrect = answer === normalize(vocab.genitive);
     }
 
-    // next
-    function nextQuestion() 
+    // Gender mode
+    if (isCorrect && genderMode && vocab.gender) {
+      isCorrect = genderInput === normalize(vocab.gender);
+    }
+
+    // Declension mode
+    if (isCorrect && decMode && vocab.declension) {
+      isCorrect = declensionInput === normalize(vocab.declension);
+    }
+
+    // Conjugation mode
+    if (isCorrect && conjMode && vocab.conjugation) {
+      isCorrect = conjugationInput === normalize(vocab.conjugation);
+    }
+
+    // Principal parts mode
+    if (ppMode && vocab.pp) {
+      const userParts = answerInputEl.value.split(",").map(p => normalize(p));
+      const correctParts = vocab.pp.map(p => normalize(p));
+      isCorrect = userParts.length === correctParts.length &&
+                  userParts.every((part, i) => part === correctParts[i]);
+    }
+
+    // Feedback
+    if (isCorrect) {
+      feedbackEl.textContent = "Correct!";
+      feedbackEl.className = "feedback correct";
+      score++;
+    } 
+    else 
     {
-      showQuestion();
+      feedbackText = `Incorrect. Acceptable: ${correctAnswers.join(", ")}`;
+      if (genMode && vocab.genitive) feedbackText += ` | Genitive: ${vocab.genitive}`;
+      if (genderMode && vocab.gender) feedbackText += ` | Gender: ${vocab.gender}`;
+      if (decMode && vocab.declension) feedbackText += ` | Declension: ${vocab.declension}`;
+      if (conjMode && vocab.conjugation) feedbackText += ` | Conjugation: ${vocab.conjugation}`;
+      if (ppMode && vocab.pp) feedbackText += ` | Principal Parts: ${vocab.pp.join(", ")}`;
+      feedbackEl.textContent = feedbackText;
+      feedbackEl.className = "feedback incorrect";
     }
 
-    // toggle mode
-    function toggleMode() 
+    currentIndex++;
+    scoreEl.textContent = `Score: ${score}/${shuffledList.length}`;
+  }
+
+  // next
+  function nextQuestion() 
+  {
+      
+    showQuestion();
+  }
+
+  // toggle mode
+  function toggleMode() 
+  {
+    mode = mode === "latToEng" ? "engToLat" : "latToEng";
+    showQuestion();
+  }
+
+  // Start over
+  function startOver() 
+  {
+    shuffledList = shuffle(vocabList);
+    currentIndex = 0;
+    score = 0;
+    questionCountModalEl.style.display = "block";
+  }
+
+  // apply question count
+  function applyQuestionCount() 
+  {
+    const count = parseInt(questionCountInputEl.value);
+    if (isNaN(count) || count <= 0) 
     {
-      mode = mode === "latToEng" ? "engToLat" : "latToEng";
-      showQuestion();
+      alert("Please enter a valid number.");
+      return;
     }
+    questionLimit = count;
+    shuffledList = shuffle(vocabList).slice(0, questionLimit);
+    currentIndex = 0;
+    score = 0;
+    questionCountModalEl.style.display = "none";
+    showQuestion();
+  }
 
-    // Start over
-    function startOver() 
-    {
-      shuffledList = shuffle(vocabList);
-      currentIndex = 0;
-      score = 0;
-      questionCountModalEl.style.display = "block";
-    }
+  // options modal
+  function openOptions() 
+  {
+    document.getElementById("ppMode").checked = ppMode;
+    document.getElementById("genMode").checked = genMode;
+    document.getElementById("genderMode").checked = genderMode;
+    document.getElementById("decMode").checked = decMode;
+    document.getElementById("conjMode").checked = conjMode;
+    optionsModalEl.style.display = "block";
+  }
+  function closeOptions() 
+  {
+    optionsModalEl.style.display = "none";
+  }
+  function applyOptions() 
+  {
+    ppMode = document.getElementById("ppMode").checked;
+    genMode = document.getElementById("genMode").checked;
+    genderMode = document.getElementById("genderMode").checked;
+    decMode = document.getElementById("decMode").checked;
+    conjMode = document.getElementById("conjMode").checked;
 
-    // apply question count
-    function applyQuestionCount()
-      {
-      const count = parseInt(questionCountInputEl.value);
-      if (isNaN(count) || count <= 0)
-      {
-        alert("Please enter a valid number.");
-        return;
-      }
-      questionLimit = count;
-      shuffledList = shuffle(vocabList).slice(0, questionLimit);
-      currentIndex = 0;
-      score = 0;
-      questionCountModalEl.style.display = "none";
-      showQuestion();
-    }
+    // toggle input visibility
+    genderInputEl.style.display = genderMode ? "block" : "none";
+    declensionInputEl.style.display = decMode ? "block" : "none";
+    conjugationInputEl.style.display = conjMode ? "block" : "none";
 
-    // options modal
-    function openOptions()
-      {
-      document.getElementById("ppMode").checked = ppMode;
-      document.getElementById("genMode").checked = genMode;
-      document.getElementById("genderMode").checked = genderMode;
-      document.getElementById("decMode").checked = decMode;
-      document.getElementById("conjMode").checked = conjMode;
-      optionsModalEl.style.display = "block";
-    }
-    function closeOptions()
-      {
-      optionsModalEl.style.display = "none";
-    }
-    function applyOptions() 
-    {
-      ppMode = document.getElementById("ppMode").checked;
-      genMode = document.getElementById("genMode").checked;
-      genderMode = document.getElementById("genderMode").checked;
-      decMode = document.getElementById("decMode").checked;
-      conjMode = document.getElementById("conjMode").checked;
-      closeOptions();
-    }
+    closeOptions();
+  }
 
-    window.addEventListener("DOMContentLoaded", init);
-  </script>
+  window.addEventListener("DOMContentLoaded", init);
+</script>

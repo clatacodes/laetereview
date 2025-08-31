@@ -1,7 +1,6 @@
 // vocabulary list
 // ō ū ā ē c
 // { latin: [""], eng: [""], fig: "", conj:""},
-<script>
   // Vocabulary list
   let vocabList = 
     [
@@ -1218,4 +1217,3 @@
   }
 
   window.addEventListener("DOMContentLoaded", init);
-</script>

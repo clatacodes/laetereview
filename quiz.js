@@ -883,114 +883,156 @@ let vocabList = [
 
 ];
 
-// Quiz state
-let shuffledList = [];
 let currentIndex = 0;
 let score = 0;
-let questionLimit = null;
-let mode = "latToEng";
-let ppMode = false;
-let genMode = false;
-let genderMode = false;
-let decMode = false;
-let conjMode = false;
+let total = 0;
+let mode = "latinToEnglish"; // toggle mode
+let questionCount = 20;
+let remainingQuestions = [];
+let options = {
+  ppMode: false,
+  genMode: false,
+  genderMode: false,
+  decMode: false,
+  conjMode: false,
+};
 
-// Elements
-const definitionEl = document.getElementById("definition");
-const answerInputEl = document.getElementById("answerInput");
-const genderInputEl = document.getElementById("genderInput");
-const declensionInputEl = document.getElementById("declensionInput");
-const conjugationInputEl = document.getElementById("conjugationInput");
+const defEl = document.getElementById("definition");
+const answerInput = document.getElementById("answerInput");
+const genderInput = document.getElementById("genderInput");
+const declensionInput = document.getElementById("declensionInput");
+const conjugationInput = document.getElementById("conjugationInput");
 const feedbackEl = document.getElementById("feedback");
 const scoreEl = document.getElementById("score");
+const modeLabel = document.getElementById("modeLabel");
 
-// Normalize helper
-function normalize(str) {
-  return str.toLowerCase().trim().replace(/[^\w\s]/g, '').replace(/\s+/g, ' ');
-}
-
-// Shuffle array
 function shuffle(arr) {
-  let a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
+  return arr.sort(() => Math.random() - 0.5);
 }
 
-// Start over
-function startOver() {
-  shuffledList = shuffle(vocabList);
-  currentIndex = 0;
+function startQuiz() {
   score = 0;
+  total = 0;
+  remainingQuestions = shuffle(vocabList).slice(0, questionCount);
+  nextQuestion();
   updateScore();
-  showQuestion();
 }
 
-// Show question
-function showQuestion() {
+function updateScore() {
+  scoreEl.textContent = `Score: ${score}/${total}`;
+}
+
+function nextQuestion() {
+  if (remainingQuestions.length === 0) {
+    defEl.textContent = "Quiz complete!";
+    return;
+  }
+  currentIndex = 0;
+  currentWord = remainingQuestions.pop();
   feedbackEl.textContent = "";
-  answerInputEl.value = "";
-  genderInputEl.value = "";
-  declensionInputEl.value = "";
-  conjugationInputEl.value = "";
 
-  const vocab = shuffledList[currentIndex];
-
-  if (mode === "latToEng") {
-    definitionEl.textContent = vocab.latin.join(", ");
+  if (mode === "latinToEnglish") {
+    defEl.textContent = currentWord.latin.join(", ");
   } else {
-    definitionEl.textContent = vocab.eng.join(", ");
+    defEl.textContent = currentWord.eng.join(", ");
   }
+
+  answerInput.value = "";
+  genderInput.value = "";
+  declensionInput.value = "";
+  conjugationInput.value = "";
+  answerInput.focus();
 }
 
-// Submit answer
-function submitAnswer() {
-  const vocab = shuffledList[currentIndex];
-  const userAns = normalize(answerInputEl.value);
+function checkAnswer() {
+  total++;
+  let userAns = answerInput.value.trim().toLowerCase();
+  let correctAns =
+    mode === "latinToEnglish"
+      ? currentWord.eng.map((e) => e.toLowerCase())
+      : currentWord.latin.map((l) => l.toLowerCase());
 
-  let correct = false;
+  let isCorrect = correctAns.includes(userAns);
 
-  if (mode === "latToEng") {
-    if (vocab.eng.some(e => normalize(e) === userAns)) {
-      correct = true;
+  // check optional modes
+  if (options.genderMode && currentWord.gender) {
+    if (genderInput.value.trim().toLowerCase() !== currentWord.gender.toLowerCase()) {
+      isCorrect = false;
     }
-  } else {
-    if (vocab.latin.some(l => normalize(l) === userAns)) {
-      correct = true;
+  }
+  if (options.decMode && currentWord.declension) {
+    if (declensionInput.value.trim() !== currentWord.declension) {
+      isCorrect = false;
+    }
+  }
+  if (options.conjMode && currentWord.conj) {
+    if (conjugationInput.value.trim() !== currentWord.conj) {
+      isCorrect = false;
     }
   }
 
-  if (correct) {
-    feedbackEl.textContent = "✅ Correct!";
+  if (isCorrect) {
+    feedbackEl.textContent = "Correct!";
+    feedbackEl.className = "feedback correct";
     score++;
   } else {
-    feedbackEl.textContent = "❌ Wrong. Correct: " + 
-      (mode === "latToEng" ? vocab.eng.join(", ") : vocab.latin.join(", "));
+    feedbackEl.textContent = `Incorrect. Correct: ${correctAns.join(", ")}`;
+    feedbackEl.className = "feedback incorrect";
   }
 
   updateScore();
 }
 
-// Next question
-function nextQuestion() {
-  currentIndex++;
-  if (currentIndex >= shuffledList.length) {
-    feedbackEl.textContent = "Quiz finished!";
-  } else {
-    showQuestion();
-  }
-}
-
-// Update score
-function updateScore() {
-  scoreEl.textContent = `Score: ${score}/${currentIndex}`;
-}
-
-// Events
-document.getElementById("submitBtn").addEventListener("click", submitAnswer);
+document.getElementById("submitBtn").addEventListener("click", checkAnswer);
 document.getElementById("nextBtn").addEventListener("click", nextQuestion);
+document.getElementById("restartBtn").addEventListener("click", () => {
+  document.getElementById("questionCountModal").style.display = "block";
+});
+document.getElementById("toggleModeBtn").addEventListener("click", () => {
+  mode = mode === "latinToEnglish" ? "englishToLatin" : "latinToEnglish";
+  modeLabel.textContent = mode === "latinToEnglish" ? "Latin → English" : "English → Latin";
+});
+document.getElementById("optionsBtn").addEventListener("click", () => {
+  document.getElementById("optionsModal").style.display = "block";
+});
+document.getElementById("closeOptionsBtn").addEventListener("click", () => {
+  document.getElementById("optionsModal").style.display = "none";
+});
+document.getElementById("applyOptionsBtn").addEventListener("click", () => {
+  options.ppMode = document.getElementById("ppMode").checked;
+  options.genMode = document.getElementById("genMode").checked;
+  options.genderMode = document.getElementById("genderMode").checked;
+  options.decMode = document.getElementById("decMode").checked;
+  options.conjMode = document.getElementById("conjMode").checked;
 
-// Init
-startOver();
+  // toggle input visibility
+  genderInput.style.display = options.genderMode ? "block" : "none";
+  declensionInput.style.display = options.decMode ? "block" : "none";
+  conjugationInput.style.display = options.conjMode ? "block" : "none";
+
+  document.getElementById("optionsModal").style.display = "none";
+});
+
+document.getElementById("startQuizBtn").addEventListener("click", () => {
+  let val = parseInt(document.getElementById("questionCountInput").value, 10);
+  if (!isNaN(val) && val > 0) questionCount = val;
+  document.getElementById("questionCountModal").style.display = "none";
+  startQuiz();
+});
+
+// keyboard shortcuts
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    document.getElementById("submitBtn").click();
+  }
+  if (e.code === "Space") {
+    e.preventDefault();
+    document.getElementById("nextBtn").click();
+  }
+});
+
+// start immediately with question count modal
+window.onload = () => {
+  document.getElementById("questionCountModal").style.display = "block";
+};

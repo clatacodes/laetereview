@@ -1004,7 +1004,8 @@ function checkAnswer()
 
 document.getElementById("submitBtn").addEventListener("click", checkAnswer);
 document.getElementById("nextBtn").addEventListener("click", nextQuestion);
-document.getElementById("restartBtn").addEventListener("click", () => {
+document.getElementById("restartBtn").addEventListener("click", () =>
+  {
   document.getElementById("questionCountModal").style.display = "block";
 });
 document.getElementById("toggleModeBtn").addEventListener("click", () =>
@@ -1051,6 +1052,7 @@ document.addEventListener("keydown", (e) =>
   {
     e.preventDefault();
     document.getElementById("submitBtn").click();
+    document.getElementById("nextBtn").click();
   }
 
 });

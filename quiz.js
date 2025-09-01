@@ -1052,11 +1052,7 @@ document.addEventListener("keydown", (e) =>
     e.preventDefault();
     document.getElementById("submitBtn").click();
   }
-  if (e.code === "Space")
-  {
-    e.preventDefault();
-    document.getElementById("nextBtn").click();
-  }
+
 });
 
 // start immediately 

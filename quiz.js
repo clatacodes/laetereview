@@ -1052,6 +1052,10 @@ document.addEventListener("keydown", (e) =>
   {
     e.preventDefault();
     document.getElementById("submitBtn").click();
+  }
+    if (e.key === "Space")
+  {
+    e.preventDefault();
     document.getElementById("nextBtn").click();
   }
 

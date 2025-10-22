@@ -149,7 +149,7 @@ let vocabList = [
 { latin: ["cras"], eng: ["tomorrow"], fig: "adverb" },
 { latin: ["credo", "credere", "credidi", "creditum"], eng: ["to believe, trust"], fig: "verb", conjugation: "irregular" },
 { latin: ["creo", "creare", "creavi", "creatum"], eng: ["to create"], fig: "verb", conjugation: "irregular" },
-{ latin: ["cresco", "crescere", "crevi", "cretum"], eng: ["to increase"], fig: "verb", conjugation: "irregular" },
+{ latin: ["cresco", "crescere", "crevi", "cretum"], eng: ["to increase, to cultivate"], fig: "verb", conjugation: "irregular" },
 { latin: ["crudelis", "crudele"], eng: ["cruel, severe", "harsh, bitter"], fig: "noun", genitive: "crudele", declension: "unknown" },
 { latin: ["culpa", "culpae"], eng: ["fault, blame"], fig: "noun", gender: "F", genitive: "culpae", declension: "1" },
 { latin: ["culpo", "culpare", "culpavi", "culpatum"], eng: ["to blame, censure"], fig: "verb", conjugation: "irregular" },
